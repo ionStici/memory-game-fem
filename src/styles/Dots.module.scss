@@ -1,0 +1,23 @@
+.ul {
+  display: grid;
+  list-style: none;
+
+  aspect-ratio: 1 / 1;
+
+  li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: #304859;
+    border-radius: 50%;
+
+    cursor: pointer;
+
+    svg {
+      width: 40px;
+      height: 40px;
+      pointer-events: none;
+    }
+  }
+}

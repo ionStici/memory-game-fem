@@ -5,6 +5,8 @@ import { useEffect } from "react";
 function StartGame({ setGameSettings }) {
   function handleActiveStates({ target }) {
     if (target.nodeName !== "BUTTON") return;
+    if (target.classList.contains(styles.active)) return;
+
     const btns = [...target.closest("div").querySelectorAll("button")];
     btns.forEach((btn) => btn.classList.remove(styles.active));
     target.classList.add(styles.active);

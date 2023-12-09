@@ -1,9 +1,13 @@
 import StartGame from "./components/StartGame";
+import { useState } from "react";
 
 function App() {
+  const [gameSettings, setGameSettings] = useState(null);
+  console.log(gameSettings);
+
   return (
     <main>
-      <StartGame />
+      {!gameSettings && <StartGame setGameSettings={setGameSettings} />}
     </main>
   );
 }

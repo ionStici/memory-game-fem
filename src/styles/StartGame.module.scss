@@ -14,13 +14,22 @@
 
 .wrapper {
   width: 100%;
-  max-width: 702px;
+  max-width: 548px;
   padding: 0 24px;
+
+  @media only screen and (min-width: 768px) {
+    max-width: 766px;
+    padding: 0 56px;
+  }
 
   svg {
     display: block;
     margin: 0 auto;
     margin-bottom: 45px;
+
+    @media only screen and (min-width: 768px) {
+      margin-bottom: 78px;
+    }
   }
 }
 
@@ -29,12 +38,28 @@
   border-radius: 10px;
   padding: 24px;
 
+  @media only screen and (min-width: 768px) {
+    border-radius: 20px;
+    padding: 56px;
+  }
+
   p {
     color: #7191a5;
     font-size: 15px;
     font-weight: 700;
 
     margin-bottom: 11px;
+
+    @media only screen and (min-width: 768px) {
+      font-size: 20px;
+      margin-bottom: 16px;
+    }
+  }
+
+  .nums {
+    @media only screen and (min-width: 768px) {
+      column-gap: 22px;
+    }
   }
 
   div {
@@ -43,6 +68,11 @@
     column-gap: 11px;
 
     margin-bottom: 24px;
+
+    @media only screen and (min-width: 768px) {
+      column-gap: 30px;
+      margin-bottom: 32px;
+    }
 
     button {
       width: 100%;
@@ -61,6 +91,11 @@
 
       &:hover {
         background-color: #6395b8;
+      }
+
+      @media only screen and (min-width: 768px) {
+        font-size: 26px;
+        height: 52px;
       }
     }
   }
@@ -93,6 +128,13 @@
 
     &:hover {
       background-color: #ffb84a;
+    }
+
+    @media only screen and (min-width: 768px) {
+      font-size: 32px;
+      height: 70px;
+      border-radius: 35px;
+      margin-top: 33px;
     }
   }
 }

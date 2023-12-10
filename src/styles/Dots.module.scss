@@ -1,3 +1,8 @@
+.wrapper {
+  padding: 0 24px;
+  margin: 0 auto;
+}
+
 .ul {
   display: grid;
   list-style: none;
@@ -19,6 +24,7 @@
       height: 100%;
       pointer-events: none;
 
+      opacity: 0;
       transition: opacity 0.2s;
     }
 

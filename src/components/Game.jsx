@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { shuffleArray } from "../lib/shuffleArray";
 import { icons } from "../data/icons";
+
 import Dots from "./Dots";
+import Header from "./Header";
 
 function Game({ gameSettings }) {
   const { theme, numberOfPlayers, gridSize } = gameSettings;
@@ -32,6 +34,7 @@ function Game({ gameSettings }) {
 
   return (
     <>
+      <Header />
       <Dots grid={grid} gridSize={gridSize} />
     </>
   );

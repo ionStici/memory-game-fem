@@ -24,8 +24,9 @@ function Dots({ grid, gridSize }) {
     setTile2(undefined);
   }
 
-  function handleDotClick({ target }) {
+  function handleDotClick(target) {
     if (guessedTiles.every((tile) => tile)) return;
+
     const tile = target.dataset.tile;
 
     if (!tile1) {
@@ -69,30 +70,41 @@ function Dots({ grid, gridSize }) {
   };
 
   return (
-    <ul className={styles.ul} style={gridStyles}>
-      {grid.map((dot, i) => {
-        return (
-          <li
-            key={i}
-            data-tile={i}
-            onClick={handleDotClick}
-            style={
-              +tile1 === i || +tile2 === i
-                ? tileYellowStyles
-                : guessedTiles[i]
-                ? tileGreyStyles
-                : {}
-            }
-          >
-            <span style={+tile1 === i || +tile2 === i ? opacityStyles : {}}>
-              {+tile1 === i && dot}
-              {+tile2 === i && dot}
-              {guessedTiles[i] && dot}
-            </span>
-          </li>
-        );
-      })}
-    </ul>
+    <div className={styles.wrapper}>
+      <ul className={styles.ul} style={gridStyles}>
+        {grid.map((dot, i) => {
+          return (
+            <li
+              key={i}
+              data-tile={i}
+              onClick={({ target }) =>
+                !(+tile1 === i || +tile2 === i || guessedTiles[i]) &&
+                handleDotClick(target)
+              }
+              style={
+                +tile1 === i || +tile2 === i
+                  ? tileYellowStyles
+                  : guessedTiles[i]
+                  ? tileGreyStyles
+                  : {}
+              }
+            >
+              <span
+                style={
+                  +tile1 === i || +tile2 === i || guessedTiles[i]
+                    ? opacityStyles
+                    : {}
+                }
+              >
+                {+tile1 === i && dot}
+                {+tile2 === i && dot}
+                {guessedTiles[i] && dot}
+              </span>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
   );
 }
 

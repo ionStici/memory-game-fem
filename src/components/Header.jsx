@@ -1,13 +1,21 @@
 import styles from "./../styles/Header.module.scss";
 import logo from "/logo.svg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function Header() {
-  //   const [match, setMatch] = useState(
-  //     window.matchMedia("(max-width: 767px)").matches
-  //   );
+  const [match, setMatch] = useState(
+    window.matchMedia("(min-width: 768px)").matches
+  );
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(min-width: 768px)");
+    const handleChange = (e) => setMatch(e.matches);
+    mediaQuery.addEventListener("change", handleChange);
+    return () => mediaQuery.removeEventListener("change", handleChange);
+  }, []);
 
   const [navIsOpen, setNavIsOpen] = useState(false);
+
   const handleToggleNav = () => setNavIsOpen((prev) => !prev);
 
   return (
@@ -20,7 +28,7 @@ function Header() {
           Menu
         </button>
 
-        {navIsOpen && (
+        {(navIsOpen || match) && (
           <>
             <div className={styles.layout}></div>
             <nav className={styles.nav}>

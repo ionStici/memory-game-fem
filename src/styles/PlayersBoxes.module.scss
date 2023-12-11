@@ -1,5 +1,13 @@
 .section {
   margin: 102px 24px 24px 24px;
+
+  @media only screen and (min-width: 768px) {
+    margin: 128px 40px 38px 40px;
+  }
+
+  @media only screen and (min-width: 1200px) {
+    margin: 102px 0 74px 0;
+  }
 }
 
 .wrapper {
@@ -9,6 +17,17 @@
   column-gap: 24px;
   max-width: 500px;
   margin: 0 auto;
+
+  @media only screen and (min-width: 768px) {
+    width: 689px;
+    max-width: revert;
+    column-gap: 11px;
+  }
+
+  @media only screen and (min-width: 1200px) {
+    width: 1100px;
+    column-gap: 30px;
+  }
 }
 
 .box {
@@ -22,26 +41,104 @@
   height: 70px;
 
   border-radius: 5px;
-  background: #dfe7ec;
+  background-color: #dfe7ec;
+
+  transition: background-color 0.25s;
+
+  @media only screen and (min-width: 768px) {
+    height: 80px;
+    border-radius: 10px;
+    row-gap: 5px;
+    padding: 0 16px;
+    align-items: flex-start;
+  }
+
+  @media only screen and (min-width: 1200px) {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    row-gap: revert;
+    height: 72px;
+    padding: 0 24px 0 21px;
+  }
+
+  p {
+    transition: color 0.25s;
+  }
 
   p:first-child {
     color: #7191a5;
     font-size: 15px;
     font-weight: 700;
+
+    @media only screen and (min-width: 1200px) {
+      font-size: 18px;
+    }
   }
 
   p:last-child {
     color: #304859;
     font-size: 24px;
     font-weight: 700;
+
+    @media only screen and (max-width: 350px) {
+      font-size: 20px;
+    }
+
+    @media only screen and (min-width: 1200px) {
+      font-size: 32px;
+    }
   }
 }
 
 .active {
   background-color: #fda214;
+  position: relative;
 
   &::after {
     content: '';
+    background-color: #fda214;
+    transition: background-color 0.25s;
+    width: 12px;
+    height: 12px;
+
+    position: absolute;
+    z-index: -1;
+    top: -6px;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+
+    @media only screen and (min-width: 450px) {
+      width: 18px;
+      height: 18px;
+      top: -9px;
+    }
+
+    @media only screen and (min-width: 1200px) {
+      width: 28.5px;
+      height: 28.5px;
+      top: -14.25px;
+    }
+  }
+
+  &::before {
+    @media only screen and (min-width: 1200px) {
+      content: 'Current Turn';
+      position: absolute;
+      z-index: 5;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: -40px;
+
+      opacity: 1;
+      transition: opacity 0.25s;
+      text-wrap: nowrap;
+      color: #152938;
+      text-transform: uppercase;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 5px;
+    }
   }
 
   p {

@@ -1,11 +1,12 @@
 import styles from './../styles/Game.module.scss';
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef } from 'react';
 import { shuffleArray } from '../lib/shuffleArray';
 import { icons } from '../data/icons';
 import Dots from './Dots';
 import Header from './Header';
 import Stats from './Stats';
 import GameOver from './GameOver';
+import PlayersBoxes from './PlayersBoxes';
 
 function Game({ gameSettings, setGameSettings }) {
   const dotsRef = useRef(null);
@@ -73,6 +74,7 @@ function Game({ gameSettings, setGameSettings }) {
       <Header setGameSettings={setGameSettings} restart={restart} />
       <Dots grid={grid} gridSize={gridSize} ref={dotsRef} setMoves={setMoves} setGameOver={setGameOver} />
       {+numberOfPlayers === 1 && <Stats moves={moves} time={time} setTime={setTime} gameOver={gameOver} />}
+      {+numberOfPlayers > 1 && <PlayersBoxes num={numberOfPlayers} />}
       {gameOver && <GameOver moves={moves} time={time} setGameSettings={setGameSettings} restart={restart} />}
     </section>
   );

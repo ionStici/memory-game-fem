@@ -2,7 +2,7 @@ import styles from './../styles/Dots.module.scss';
 import { useEffect, useState } from 'react';
 import { useImperativeHandle, forwardRef } from 'react';
 
-const Dots = forwardRef(({ grid, gridSize }, ref) => {
+const Dots = forwardRef(({ grid, gridSize, setMoves }, ref) => {
   const [match, setMatch] = useState(window.matchMedia('(min-width: 768px)').matches);
 
   useEffect(() => {
@@ -29,11 +29,13 @@ const Dots = forwardRef(({ grid, gridSize }, ref) => {
 
     if (!tile1) {
       setTile1(tile);
+      setMoves(prev => prev + 1);
       return;
     }
 
     if (!tile2) {
       setTile2(tile);
+      setMoves(prev => prev + 1);
       return;
     }
   }

@@ -4,11 +4,16 @@ import { shuffleArray } from '../lib/shuffleArray';
 import { icons } from '../data/icons';
 import Dots from './Dots';
 import Header from './Header';
+import Stats from './Stats';
 
 function Game({ gameSettings, setGameSettings }) {
   const dotsRef = useRef(null);
 
-  const { theme, numberOfPlayers, gridSize } = gameSettings;
+  const [moves, setMoves] = useState(0);
+  const [time, setTime] = useState(0);
+
+  //   numberOfPlayers
+  const { theme, gridSize } = gameSettings;
 
   function generateGrid() {
     const randomIconsSet = new Set([]);
@@ -33,9 +38,9 @@ function Game({ gameSettings, setGameSettings }) {
 
   const [grid, setGrid] = useState(generateGrid());
 
-  function generateNewGrid() {
+  const generateNewGrid = () => {
     setGrid(() => generateGrid());
-  }
+  };
 
   const resetGrid = () => {
     if (dotsRef.current) {
@@ -43,11 +48,17 @@ function Game({ gameSettings, setGameSettings }) {
     }
   };
 
+  const resetStats = () => {
+    setMoves(0);
+    setTime(0);
+  };
+
   return (
-    <div className={styles.wrapper}>
-      <Header setGameSettings={setGameSettings} generateNewGrid={generateNewGrid} resetGrid={resetGrid} />
-      <Dots grid={grid} gridSize={gridSize} ref={dotsRef} />
-    </div>
+    <section className={styles.wrapper}>
+      <Header setGameSettings={setGameSettings} generateNewGrid={generateNewGrid} resetGrid={resetGrid} resetStats={resetStats} />
+      <Dots grid={grid} gridSize={gridSize} ref={dotsRef} setMoves={setMoves} />
+      <Stats moves={moves} time={time} setTime={setTime} />
+    </section>
   );
 }
 

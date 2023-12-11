@@ -2,7 +2,7 @@ import styles from './../styles/Header.module.scss';
 import logo from '/logo.svg';
 import { useEffect, useState } from 'react';
 
-function Header({ setGameSettings, generateNewGrid, resetGrid, resetStats }) {
+function Header({ setGameSettings, restart }) {
   const [match, setMatch] = useState(window.matchMedia('(min-width: 768px)').matches);
 
   useEffect(() => {
@@ -18,9 +18,7 @@ function Header({ setGameSettings, generateNewGrid, resetGrid, resetStats }) {
 
   const handleRestartNew = ({ target }) => {
     if (target.textContent === 'Restart') {
-      generateNewGrid();
-      resetGrid();
-      resetStats();
+      restart();
     }
 
     if (target.textContent === 'New Game') {

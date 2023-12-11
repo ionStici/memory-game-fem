@@ -1,19 +1,27 @@
 import styles from './../styles/Game.module.scss';
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { shuffleArray } from '../lib/shuffleArray';
 import { icons } from '../data/icons';
 import Dots from './Dots';
 import Header from './Header';
 import Stats from './Stats';
+import GameOver from './GameOver';
 
 function Game({ gameSettings, setGameSettings }) {
   const dotsRef = useRef(null);
 
+  const [gameOver, setGameOver] = useState(false);
+
   const [moves, setMoves] = useState(0);
   const [time, setTime] = useState(0);
 
-  //   numberOfPlayers
-  const { theme, gridSize } = gameSettings;
+  //   useEffect(() => {
+  //     if (gameOver) {
+  //       console.log(gameOver);
+  //     }
+  //   }, [gameOver]);
+
+  const { theme, numberOfPlayers: players, gridSize } = gameSettings;
 
   function generateGrid() {
     const randomIconsSet = new Set([]);
@@ -53,11 +61,18 @@ function Game({ gameSettings, setGameSettings }) {
     setTime(0);
   };
 
+  const restart = () => {
+    generateNewGrid();
+    resetGrid();
+    resetStats();
+  };
+
   return (
     <section className={styles.wrapper}>
-      <Header setGameSettings={setGameSettings} generateNewGrid={generateNewGrid} resetGrid={resetGrid} resetStats={resetStats} />
-      <Dots grid={grid} gridSize={gridSize} ref={dotsRef} setMoves={setMoves} />
-      <Stats moves={moves} time={time} setTime={setTime} />
+      <Header setGameSettings={setGameSettings} restart={restart} />
+      <Dots grid={grid} gridSize={gridSize} ref={dotsRef} setMoves={setMoves} setGameOver={setGameOver} />
+      <Stats moves={moves} time={time} setTime={setTime} gameOver={gameOver} />
+      {true && <GameOver moves={moves} time={time} setGameSettings={setGameSettings} restart={restart} />}
     </section>
   );
 }

@@ -2,7 +2,7 @@ import styles from './../styles/Dots.module.scss';
 import { useEffect, useState } from 'react';
 import { useImperativeHandle, forwardRef } from 'react';
 
-const Dots = forwardRef(({ grid, gridSize, setMoves }, ref) => {
+const Dots = forwardRef(({ grid, gridSize, setMoves, setGameOver }, ref) => {
   const [match, setMatch] = useState(window.matchMedia('(min-width: 768px)').matches);
 
   useEffect(() => {
@@ -57,7 +57,13 @@ const Dots = forwardRef(({ grid, gridSize, setMoves }, ref) => {
         resetTiles();
       }, 500);
     }
+
+    if (guessedTiles.every(tile => tile)) gameOver();
   }, [tile1, tile2]);
+
+  function gameOver() {
+    setGameOver(true);
+  }
 
   const gridStyles = {
     gridTemplateColumns: `repeat(${+gridSize === 4 ? '4, minmax(0, 118px)' : '6, minmax(0, 82px)'})`,

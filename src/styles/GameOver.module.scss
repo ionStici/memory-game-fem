@@ -1,0 +1,48 @@
+@keyframes scale-in-center {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.section {
+  width: 100vw;
+  height: 100vh;
+
+  position: fixed;
+  z-index: 7;
+  left: 0;
+  top: 0;
+}
+
+.layout {
+  animation: fade-in 0.5s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+  position: fixed;
+  z-index: 8;
+  left: 0;
+  top: 0;
+
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.wrapper {
+  animation: scale-in-center 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+
+  position: relative;
+  z-index: 9;
+}

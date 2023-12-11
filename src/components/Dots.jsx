@@ -2,7 +2,7 @@ import styles from './../styles/Dots.module.scss';
 import { useEffect, useState } from 'react';
 import { useImperativeHandle, forwardRef } from 'react';
 
-const Dots = forwardRef(({ grid, gridSize, setMoves, setGameOver }, ref) => {
+const Dots = forwardRef(({ grid, gridSize, setMoves, setGameOver, score, setScore, activePlayer, setActivePlayer, numberOfPlayers }, ref) => {
   const [match, setMatch] = useState(window.matchMedia('(min-width: 768px)').matches);
 
   useEffect(() => {
@@ -42,7 +42,16 @@ const Dots = forwardRef(({ grid, gridSize, setMoves, setGameOver }, ref) => {
 
   useEffect(() => {
     if (tile1 && tile2 && grid[+tile1] !== grid[+tile2]) {
-      setTimeout(() => resetTiles(), 700);
+      setTimeout(() => {
+        resetTiles();
+
+        if (+numberOfPlayers > 1) {
+          setActivePlayer(prev => {
+            if (prev < score.length) return prev + 1;
+            if (prev === score.length) return 1;
+          });
+        }
+      }, 700);
     }
 
     if (tile1 && tile2 && grid[+tile1] === grid[+tile2]) {
@@ -55,6 +64,15 @@ const Dots = forwardRef(({ grid, gridSize, setMoves, setGameOver }, ref) => {
         });
 
         resetTiles();
+
+        if (+numberOfPlayers > 1) {
+          setScore(prev => {
+            const arr = [...prev];
+            arr[activePlayer - 1] = arr[activePlayer - 1] + 1;
+            console.log(arr);
+            return arr;
+          });
+        }
       }, 500);
     }
 

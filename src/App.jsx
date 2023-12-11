@@ -6,7 +6,7 @@ function App() {
   const [gameSettings, setGameSettings] = useState(null);
 
   useEffect(() => {
-    setGameSettings({ theme: 'Icons', numberOfPlayers: '4', gridSize: '4' });
+    // setGameSettings({ theme: 'Icons', numberOfPlayers: '4', gridSize: '4' });
   }, []);
 
   return (

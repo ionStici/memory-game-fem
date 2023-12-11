@@ -1,7 +1,7 @@
 import styles from './../styles/PlayersBoxes.module.scss';
 import { useState, useEffect } from 'react';
 
-function PlayersBoxes({ num }) {
+function PlayersBoxes({ num, score, activePlayer }) {
   const [less768px, setLess768px] = useState(window.matchMedia('(min-width: 768px)').matches);
 
   useEffect(() => {
@@ -16,9 +16,9 @@ function PlayersBoxes({ num }) {
       <div className={styles.wrapper}>
         {Array.from({ length: num }, (_, i) => i + 1).map(player => {
           return (
-            <div key={player} className={`${styles.box} ${player === 1 ? styles.active : ''}`}>
+            <div key={player} className={`${styles.box} ${activePlayer == player ? styles.active : ''}`}>
               <p>{less768px ? `Player ${player}` : `P${player}`}</p>
-              <p>{'0'}</p>
+              <p>{score[player - 1]}</p>
             </div>
           );
         })}

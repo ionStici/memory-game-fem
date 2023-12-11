@@ -1,5 +1,5 @@
 import styles from './../styles/Game.module.scss';
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { shuffleArray } from '../lib/shuffleArray';
 import { icons } from '../data/icons';
 import Dots from './Dots';
@@ -16,13 +16,20 @@ function Game({ gameSettings, setGameSettings }) {
   const [moves, setMoves] = useState(0);
   const [time, setTime] = useState(0);
 
-  //   useEffect(() => {
-  //     if (gameOver) {
-  //       console.log(gameOver);
-  //     }
-  //   }, [gameOver]);
+  //   useEffect(() => { if (gameOver) { console.log(gameOver); } }, [gameOver]);
 
   const { theme, numberOfPlayers, gridSize } = gameSettings;
+
+  // // // // //
+
+  const [score, setScore] = useState([]);
+  const [activePlayer, setActivePlayer] = useState(1);
+
+  useEffect(() => {
+    if (+numberOfPlayers > 1) setScore(Array.from({ length: +numberOfPlayers }, () => 0));
+  }, [numberOfPlayers]);
+
+  // // // // //
 
   function generateGrid() {
     const randomIconsSet = new Set([]);
@@ -72,9 +79,20 @@ function Game({ gameSettings, setGameSettings }) {
   return (
     <section className={styles.wrapper}>
       <Header setGameSettings={setGameSettings} restart={restart} />
-      <Dots grid={grid} gridSize={gridSize} ref={dotsRef} setMoves={setMoves} setGameOver={setGameOver} />
+      <Dots
+        grid={grid}
+        gridSize={gridSize}
+        ref={dotsRef}
+        setMoves={setMoves}
+        setGameOver={setGameOver}
+        score={score}
+        setScore={setScore}
+        activePlayer={activePlayer}
+        setActivePlayer={setActivePlayer}
+        numberOfPlayers={numberOfPlayers}
+      />
       {+numberOfPlayers === 1 && <Stats moves={moves} time={time} setTime={setTime} gameOver={gameOver} />}
-      {+numberOfPlayers > 1 && <PlayersBoxes num={numberOfPlayers} />}
+      {+numberOfPlayers > 1 && <PlayersBoxes num={numberOfPlayers} score={score} activePlayer={activePlayer} />}
       {gameOver && <GameOver moves={moves} time={time} setGameSettings={setGameSettings} restart={restart} />}
     </section>
   );

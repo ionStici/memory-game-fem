@@ -70,7 +70,7 @@ function Dots({ grid, gridSize }) {
             <li
               key={i}
               data-tile={i}
-              className={`${+tile1 === i || +tile2 === i || guessedTiles[i] ? styles.active : ''}`}
+              className={`${+tile1 === i || +tile2 === i || guessedTiles[i] ? styles.active : ''} ${+gridSize === 4 ? styles.grid_4 : styles.grid_6}`}
               onClick={({ target }) => {
                 if (+tile1 === i || +tile2 === i || guessedTiles[i]) return;
                 handleDotClick(target);

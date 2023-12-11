@@ -12,9 +12,10 @@
 .ul {
   display: grid;
   justify-content: center;
-  list-style: none;
-
   aspect-ratio: 1 / 1;
+  list-style: none;
+  color: #fcfcfc;
+  font-weight: 700;
 
   li {
     position: relative;
@@ -63,9 +64,43 @@
     }
 
     svg {
+      pointer-events: none;
+    }
+  }
+
+  .grid_4 {
+    font-size: 56px;
+
+    @media only screen and (max-width: 450px) {
+      font-size: 40px;
+    }
+
+    svg {
+      width: 56px;
+      height: 56px;
+
+      @media only screen and (max-width: 450px) {
+        width: 40px;
+        height: 40px;
+      }
+    }
+  }
+
+  .grid_6 {
+    font-size: 44px;
+
+    @media only screen and (max-width: 450px) {
+      font-size: 24px;
+    }
+
+    svg {
       width: 40px;
       height: 40px;
-      pointer-events: none;
+
+      @media only screen and (max-width: 450px) {
+        width: 30px;
+        height: 30px;
+      }
     }
   }
 

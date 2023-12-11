@@ -58,7 +58,9 @@ const Dots = forwardRef(({ grid, gridSize, setMoves, setGameOver }, ref) => {
       }, 500);
     }
 
-    if (guessedTiles.every(tile => tile)) gameOver();
+    setTimeout(() => {
+      if (guessedTiles.every(tile => tile)) gameOver();
+    }, 1000);
   }, [tile1, tile2]);
 
   function gameOver() {

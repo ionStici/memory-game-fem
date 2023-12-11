@@ -21,12 +21,12 @@ function Game({ gameSettings, setGameSettings }) {
   //     }
   //   }, [gameOver]);
 
-  const { theme, numberOfPlayers: players, gridSize } = gameSettings;
+  const { theme, numberOfPlayers, gridSize } = gameSettings;
 
   function generateGrid() {
     const randomIconsSet = new Set([]);
 
-    if (gridSize === 4 && theme === 'icons') {
+    if (+gridSize === 4 && theme === 'Icons') {
       while (randomIconsSet.size < 8) randomIconsSet.add(Math.floor(Math.random() * 18));
     }
 
@@ -35,11 +35,11 @@ function Game({ gameSettings, setGameSettings }) {
     return shuffleArray([
       ...Array.from({ length: (gridSize * gridSize) / 2 }, (_, i) => {
         if (theme === 'Numbers') return i;
-        if (theme === 'Icons') return icons[gridSize === 4 ? randomIcons[i] : i];
+        if (theme === 'Icons') return icons[+gridSize === 4 ? randomIcons[i] : i];
       }),
       ...Array.from({ length: (gridSize * gridSize) / 2 }, (_, i) => {
         if (theme === 'Numbers') return i;
-        if (theme === 'Icons') return icons[gridSize === 4 ? randomIcons[i] : i];
+        if (theme === 'Icons') return icons[+gridSize === 4 ? randomIcons[i] : i];
       }),
     ]);
   }
@@ -65,13 +65,14 @@ function Game({ gameSettings, setGameSettings }) {
     generateNewGrid();
     resetGrid();
     resetStats();
+    setGameOver(false);
   };
 
   return (
     <section className={styles.wrapper}>
       <Header setGameSettings={setGameSettings} restart={restart} />
       <Dots grid={grid} gridSize={gridSize} ref={dotsRef} setMoves={setMoves} setGameOver={setGameOver} />
-      <Stats moves={moves} time={time} setTime={setTime} gameOver={gameOver} />
+      {+numberOfPlayers === 1 && <Stats moves={moves} time={time} setTime={setTime} gameOver={gameOver} />}
       {gameOver && <GameOver moves={moves} time={time} setGameSettings={setGameSettings} restart={restart} />}
     </section>
   );

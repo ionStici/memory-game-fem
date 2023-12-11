@@ -2,7 +2,7 @@ import styles from './../styles/Header.module.scss';
 import logo from '/logo.svg';
 import { useEffect, useState } from 'react';
 
-function Header() {
+function Header({ setGameSettings, generateNewGrid, resetGrid }) {
   const [match, setMatch] = useState(window.matchMedia('(min-width: 768px)').matches);
 
   useEffect(() => {
@@ -15,6 +15,17 @@ function Header() {
   const [navIsOpen, setNavIsOpen] = useState(false);
 
   const handleToggleNav = () => setNavIsOpen(prev => !prev);
+
+  const handleRestartNew = ({ target }) => {
+    if (target.textContent === 'Restart') {
+      generateNewGrid();
+      resetGrid();
+    }
+
+    if (target.textContent === 'New Game') {
+      setGameSettings(null);
+    }
+  };
 
   return (
     <header className={styles.header}>
@@ -32,10 +43,12 @@ function Header() {
             <nav className={styles.nav}>
               <ul>
                 <li>
-                  <button className={styles.btn_restart}>Restart</button>
+                  <button className={styles.btn_restart} onClick={handleRestartNew}>
+                    Restart
+                  </button>
                 </li>
                 <li>
-                  <button>New Game</button>
+                  <button onClick={handleRestartNew}>New Game</button>
                 </li>
                 <li>
                   <button onClick={handleToggleNav}>Resume Game</button>

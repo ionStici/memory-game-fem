@@ -1,16 +1,16 @@
 import styles from './../styles/Game.module.scss';
-
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { shuffleArray } from '../lib/shuffleArray';
 import { icons } from '../data/icons';
-
 import Dots from './Dots';
 import Header from './Header';
 
 function Game({ gameSettings, setGameSettings }) {
+  const dotsRef = useRef(null);
+
   const { theme, numberOfPlayers, gridSize } = gameSettings;
 
-  const [grid, _] = useState(() => {
+  function generateGrid() {
     const randomIconsSet = new Set([]);
 
     if (gridSize === 4 && theme === 'icons') {
@@ -29,12 +29,24 @@ function Game({ gameSettings, setGameSettings }) {
         if (theme === 'Icons') return icons[gridSize === 4 ? randomIcons[i] : i];
       }),
     ]);
-  });
+  }
+
+  const [grid, setGrid] = useState(generateGrid());
+
+  function generateNewGrid() {
+    setGrid(() => generateGrid());
+  }
+
+  const resetGrid = () => {
+    if (dotsRef.current) {
+      dotsRef.current.resetGrid();
+    }
+  };
 
   return (
     <div className={styles.wrapper}>
-      <Header />
-      <Dots grid={grid} gridSize={gridSize} />
+      <Header setGameSettings={setGameSettings} generateNewGrid={generateNewGrid} resetGrid={resetGrid} />
+      <Dots grid={grid} gridSize={gridSize} ref={dotsRef} />
     </div>
   );
 }

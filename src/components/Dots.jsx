@@ -1,7 +1,8 @@
 import styles from './../styles/Dots.module.scss';
 import { useEffect, useState } from 'react';
+import { useImperativeHandle, forwardRef } from 'react';
 
-function Dots({ grid, gridSize }) {
+const Dots = forwardRef(({ grid, gridSize }, ref) => {
   const [match, setMatch] = useState(window.matchMedia('(min-width: 768px)').matches);
 
   useEffect(() => {
@@ -62,6 +63,14 @@ function Dots({ grid, gridSize }) {
     gap: `${match ? (+gridSize === 4 ? '20px' : '16px') : +gridSize === 4 ? '12.3px' : '9.1px'}`,
   };
 
+  useImperativeHandle(ref, () => ({
+    resetGrid() {
+      setGuessedTiles(Array.from({ length: grid.length }, () => false));
+      setTile1(undefined);
+      setTile2(undefined);
+    },
+  }));
+
   return (
     <div className={`${styles.wrapper}`} style={{ width: `${match ? (+gridSize === 4 ? '532px' : '572px') : ''}` }}>
       <ul className={styles.ul} style={gridStyles}>
@@ -88,6 +97,6 @@ function Dots({ grid, gridSize }) {
       </ul>
     </div>
   );
-}
+});
 
 export default Dots;

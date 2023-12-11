@@ -72,7 +72,7 @@ function Game({ gameSettings, setGameSettings }) {
       <Header setGameSettings={setGameSettings} restart={restart} />
       <Dots grid={grid} gridSize={gridSize} ref={dotsRef} setMoves={setMoves} setGameOver={setGameOver} />
       <Stats moves={moves} time={time} setTime={setTime} gameOver={gameOver} />
-      {true && <GameOver moves={moves} time={time} setGameSettings={setGameSettings} restart={restart} />}
+      {gameOver && <GameOver moves={moves} time={time} setGameSettings={setGameSettings} restart={restart} />}
     </section>
   );
 }

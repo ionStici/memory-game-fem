@@ -1,15 +1,19 @@
-import styles from './../styles/Game.module.scss';
 import { useState, useRef, useEffect } from 'react';
+import { useContext } from 'react';
 import { shuffleArray } from '../lib/shuffleArray';
 import { generateGrid } from '../lib/generateGrid';
 import { icons } from '../data/icons';
+import styles from './../styles/Game.module.scss';
 import Dots from './Dots';
 import Header from './Header';
 import Stats from './Stats';
 import GameOver from './GameOver';
 import PlayersBoxes from './PlayersBoxes';
+import ScoresContext from '../store/ScoresContext';
 
 function Game({ gameSettings, setGameSettings }) {
+  const { _, setScores } = useContext(ScoresContext);
+
   const { theme, numberOfPlayers, gridSize } = gameSettings;
   const dotsRef = useRef(null);
 
@@ -33,10 +37,12 @@ function Game({ gameSettings, setGameSettings }) {
   useEffect(() => {
     if (+numberOfPlayers === 1 && gameOver) {
       const game = { theme, numberOfPlayers, gridSize, moves, time };
+      setScores(prev => [...prev, game]);
     }
 
     if (+numberOfPlayers > 1 && gameOver) {
       const game = { theme, numberOfPlayers, gridSize, score };
+      setScores(prev => [...prev, game]);
     }
   }, [gameOver]);
 

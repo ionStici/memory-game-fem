@@ -1,13 +1,13 @@
 import StartGame from './components/StartGame';
 import Game from './components/Game';
-import { useState, useEffect } from 'react';
+import React from 'react';
 
 function App() {
-  const [gameSettings, setGameSettings] = useState(null);
+  const [gameSettings, setGameSettings] = React.useState(null);
 
-  // useEffect(() => {
-  // setGameSettings({ theme: 'Numbers', numberOfPlayers: '1', gridSize: '4' });
-  // }, []);
+  //   React.useEffect(() => {
+  //     setGameSettings({ theme: 'Numbers', numberOfPlayers: '1', gridSize: '4' });
+  //   }, []);
 
   return (
     <main>

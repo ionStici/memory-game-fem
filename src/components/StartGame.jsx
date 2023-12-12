@@ -1,8 +1,9 @@
 import styles from './../styles/StartGame.module.scss';
+import Scores from './Scores';
 import { logoWhite } from '../data/logoWhite';
 import { useEffect } from 'react';
 
-function StartGame({ setGameSettings }) {
+function StartGame({ setGameSettings, setShowScores, showScores }) {
   function handleActiveStates({ target }) {
     if (target.nodeName !== 'BUTTON') return;
     if (target.classList.contains(styles.active)) return;
@@ -35,6 +36,19 @@ function StartGame({ setGameSettings }) {
     document.body.style.setProperty('background-color', '#152938');
     return () => document.body.style.setProperty('background-color', '#FCFCFC');
   }, []);
+
+  if (showScores) {
+    return (
+      <div className={styles.layout}>
+        <div className={styles.wrapper}>
+          {logoWhite}
+          <section className={styles.section}>
+            <Scores setShowScores={setShowScores} />
+          </section>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className={styles.layout}>
@@ -81,7 +95,7 @@ function StartGame({ setGameSettings }) {
             <button onClick={handleStartGame} className={styles.btn_start}>
               Start Game
             </button>
-            <button className={styles.scores_btn}>
+            <button className={styles.scores_btn} onClick={() => setShowScores(true)}>
               <img src="/reader.svg" alt="" />
             </button>
           </div>

@@ -13,7 +13,7 @@ function StartGame({ setGameSettings }) {
   }
 
   function handleStartGame({ target }) {
-    const divs = [...target.closest(`.${styles.section}`).querySelectorAll('div')];
+    const divs = [...target.closest(`.${styles.section}`).querySelectorAll(`.${styles.box}`)];
 
     const theme = [...divs[0].querySelectorAll('button')].find(btn =>
       btn.classList.contains(styles.active)
@@ -24,8 +24,11 @@ function StartGame({ setGameSettings }) {
     const gridSize = [...divs[2].querySelectorAll('button')].find(btn =>
       btn.classList.contains(styles.active)
     ).textContent[0];
+    const tilesShape = [...divs[3].querySelectorAll('button')].find(btn =>
+      btn.classList.contains(styles.active)
+    ).textContent;
 
-    setGameSettings({ theme, numberOfPlayers, gridSize });
+    setGameSettings({ theme, numberOfPlayers, gridSize, tilesShape });
   }
 
   useEffect(() => {
@@ -39,30 +42,46 @@ function StartGame({ setGameSettings }) {
         {logoWhite}
 
         <section className={styles.section}>
-          <p>Select Theme</p>
-          <div onClick={handleActiveStates}>
-            <button className={styles.active}>Numbers</button>
-            <button>Icons</button>
+          <div className={styles.box}>
+            <p>Select Theme</p>
+            <div onClick={handleActiveStates}>
+              <button className={styles.active}>Numbers</button>
+              <button>Icons</button>
+            </div>
           </div>
 
-          <p>Number of Players</p>
-          <div onClick={handleActiveStates} className={styles.nums}>
-            {Array.from({ length: 4 }, () => null).map((_, i) => (
-              <button key={i} className={i === 0 ? styles.active : ''}>
-                {i + 1}
-              </button>
-            ))}
+          <div className={styles.box}>
+            <p>Number of Players</p>
+            <div onClick={handleActiveStates} className={styles.nums}>
+              {Array.from({ length: 4 }, () => null).map((_, i) => (
+                <button key={i} className={i === 0 ? styles.active : ''}>
+                  {i + 1}
+                </button>
+              ))}
+            </div>
           </div>
 
-          <p>Grid Size</p>
-          <div onClick={handleActiveStates}>
-            <button className={styles.active}>4x4</button>
-            <button>6x6</button>
+          <div className={styles.box}>
+            <p>Grid Size</p>
+            <div onClick={handleActiveStates}>
+              <button className={styles.active}>4x4</button>
+              <button>6x6</button>
+            </div>
           </div>
 
-          <button onClick={handleStartGame} className={styles.btn_start}>
-            Start Game
-          </button>
+          <div className={styles.box}>
+            <p>Tiles Shape</p>
+            <div onClick={handleActiveStates}>
+              <button className={styles.active}>Squircle</button>
+              <button>Circle</button>
+            </div>
+          </div>
+
+          <div>
+            <button onClick={handleStartGame} className={styles.btn_start}>
+              Start Game
+            </button>
+          </div>
         </section>
       </div>
     </div>

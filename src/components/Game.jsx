@@ -14,7 +14,7 @@ import ScoresContext from '../store/ScoresContext';
 function Game({ gameSettings, setGameSettings }) {
   const { _, setScores } = useContext(ScoresContext);
 
-  const { theme, numberOfPlayers, gridSize } = gameSettings;
+  const { theme, numberOfPlayers, gridSize, tilesShape } = gameSettings;
   const dotsRef = useRef(null);
 
   const [grid, setGrid] = useState(generateGrid(theme, gridSize, icons, shuffleArray));
@@ -33,6 +33,13 @@ function Game({ gameSettings, setGameSettings }) {
   }, [numberOfPlayers]);
 
   // // // // // // // // // // // // // // // // // // // //
+
+  useEffect(() => {
+    if (tilesShape === 'Squircle')
+      document.documentElement.style.setProperty('--tile-border-radius', '25px');
+    if (tilesShape === 'Circle')
+      document.documentElement.style.setProperty('--tile-border-radius', '50%');
+  }, [tilesShape]);
 
   useEffect(() => {
     if (+numberOfPlayers === 1 && gameOver) {

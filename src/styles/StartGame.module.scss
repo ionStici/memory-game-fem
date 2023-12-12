@@ -56,68 +56,75 @@
     padding: 56px;
   }
 
-  p {
-    color: #7191a5;
-    font-size: 15px;
-    font-weight: 700;
-
-    margin-bottom: 11px;
-
-    @media only screen and (min-width: 768px) {
-      font-size: 20px;
-      margin-bottom: 16px;
-    }
-  }
-
-  .nums {
-    @media only screen and (min-width: 768px) {
-      column-gap: 22px;
-    }
-  }
-
-  div {
+  .box {
     display: flex;
-    justify-content: space-between;
-    column-gap: 11px;
+    flex-direction: column;
 
     margin-bottom: 24px;
 
     @media only screen and (min-width: 768px) {
-      column-gap: 30px;
       margin-bottom: 32px;
     }
 
-    button {
-      width: 100%;
-      height: 40px;
-
-      border: none;
-      border-radius: 26px;
-      background: #bcced9;
-
-      color: #fcfcfc;
-      font-size: 16px;
+    p {
+      color: #7191a5;
+      font-size: 15px;
       font-weight: 700;
-
-      cursor: pointer;
-      transition: background-color 0.2s;
-
-      &:hover {
-        background-color: #6395b8;
-      }
+      margin-bottom: 11px;
 
       @media only screen and (min-width: 768px) {
-        font-size: 26px;
-        height: 52px;
+        font-size: 20px;
+        margin-bottom: 16px;
       }
     }
-  }
 
-  .active {
-    background-color: #304859;
+    div {
+      display: flex;
+      justify-content: space-between;
+      column-gap: 11px;
 
-    &:hover {
-      background-color: #304859;
+      @media only screen and (min-width: 768px) {
+        column-gap: 30px;
+      }
+
+      button {
+        width: 100%;
+        height: 40px;
+
+        border: none;
+        border-radius: 26px;
+        background-color: #bcced9;
+
+        color: #fcfcfc;
+        font-size: 16px;
+        font-weight: 700;
+
+        cursor: pointer;
+        transition: background-color 0.2s;
+
+        &:hover {
+          background-color: #6395b8;
+        }
+
+        @media only screen and (min-width: 768px) {
+          font-size: 26px;
+          height: 52px;
+        }
+      }
+
+      .nums {
+        @media only screen and (min-width: 768px) {
+          column-gap: 22px;
+        }
+      }
+
+      .active {
+        background-color: #304859;
+
+        &:hover {
+          background-color: #304859;
+        }
+      }
     }
   }
 
@@ -134,10 +141,10 @@
     border-radius: 26px;
     background-color: #fda214;
 
-    margin-top: 32px;
-
     cursor: pointer;
     transition: background-color 0.2s;
+
+    margin-top: 32px;
 
     &:hover {
       background-color: #ffb84a;
@@ -147,7 +154,7 @@
       font-size: 32px;
       height: 70px;
       border-radius: 35px;
-      margin-top: 33px;
+      margin-top: 40px;
     }
   }
 }

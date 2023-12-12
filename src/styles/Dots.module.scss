@@ -9,6 +9,11 @@
   }
 }
 
+:root {
+  //   --tile-border-radius: 50%;
+  --tile-border-radius: 25px;
+}
+
 .ul {
   display: grid;
   justify-content: center;
@@ -31,7 +36,9 @@
     .back {
       width: 100%;
       height: 100%;
-      border-radius: 50%;
+      //   border-radius: 50%;
+      //   border-radius: 25px;
+      border-radius: var(--tile-border-radius);
 
       position: absolute;
       z-index: 5;

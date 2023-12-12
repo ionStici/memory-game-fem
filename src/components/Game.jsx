@@ -35,8 +35,10 @@ function Game({ gameSettings, setGameSettings }) {
   // // // // // // // // // // // // // // // // // // // //
 
   useEffect(() => {
-    if (tilesShape === 'Squircle')
+    if (tilesShape === 'Squircle' && +gridSize === 4)
       document.documentElement.style.setProperty('--tile-border-radius', '25px');
+    if (tilesShape === 'Squircle' && +gridSize === 6)
+      document.documentElement.style.setProperty('--tile-border-radius', '20px');
     if (tilesShape === 'Circle')
       document.documentElement.style.setProperty('--tile-border-radius', '50%');
   }, [tilesShape]);

@@ -77,9 +77,12 @@ function StartGame({ setGameSettings }) {
             </div>
           </div>
 
-          <div>
+          <div className={styles.btns_wrapper}>
             <button onClick={handleStartGame} className={styles.btn_start}>
               Start Game
+            </button>
+            <button className={styles.scores_btn}>
+              <img src="/reader.svg" alt="" />
             </button>
           </div>
         </section>

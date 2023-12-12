@@ -5,9 +5,41 @@
   &::-webkit-scrollbar {
     display: none;
   }
+
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
 
 .container {
+}
+
+.btns_wrapper {
+  display: flex;
+  align-items: center;
+
+  margin-bottom: 20px;
+
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100px;
+    height: 48px;
+
+    img {
+      width: 35px;
+    }
+  }
+}
+
+.ul {
+  li {
+    display: flex;
+    column-gap: 10px;
+
+    div {
+      margin-bottom: 20px;
+    }
+  }
 }

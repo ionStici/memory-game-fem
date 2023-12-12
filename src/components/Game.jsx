@@ -30,6 +30,18 @@ function Game({ gameSettings, setGameSettings }) {
 
   // // // // // // // // // // // // // // // // // // // //
 
+  useEffect(() => {
+    if (+numberOfPlayers === 1 && gameOver) {
+      const game = { theme, numberOfPlayers, gridSize, moves, time };
+    }
+
+    if (+numberOfPlayers > 1 && gameOver) {
+      const game = { theme, numberOfPlayers, gridSize, score };
+    }
+  }, [gameOver]);
+
+  // // // // // // // // // // // // // // // // // // // //
+
   const generateNewGrid = () => {
     setGrid(() => generateGrid(theme, gridSize, icons, shuffleArray));
   };

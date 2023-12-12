@@ -1,12 +1,12 @@
 .section {
-  margin: 102px 24px 24px 24px;
+  padding: 102px 24px 24px 24px;
 
   @media only screen and (min-width: 768px) {
-    margin: 128px 40px 38px 40px;
+    padding: 128px 40px 38px 40px;
   }
 
   @media only screen and (min-width: 1200px) {
-    margin: 102px 0 74px 0;
+    padding: 102px 0 74px 0;
   }
 }
 

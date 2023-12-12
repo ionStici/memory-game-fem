@@ -1,5 +1,5 @@
 import styles from './../styles/StartGame.module.scss';
-import { logoWhite } from '../data/logo';
+import { logoWhite } from '../data/logoWhite';
 import { useEffect } from 'react';
 
 function StartGame({ setGameSettings }) {
@@ -15,9 +15,15 @@ function StartGame({ setGameSettings }) {
   function handleStartGame({ target }) {
     const divs = [...target.closest(`.${styles.section}`).querySelectorAll('div')];
 
-    const theme = [...divs[0].querySelectorAll('button')].find(btn => btn.classList.contains(styles.active)).textContent;
-    const numberOfPlayers = [...divs[1].querySelectorAll('button')].find(btn => btn.classList.contains(styles.active)).textContent;
-    const gridSize = [...divs[2].querySelectorAll('button')].find(btn => btn.classList.contains(styles.active)).textContent[0];
+    const theme = [...divs[0].querySelectorAll('button')].find(btn =>
+      btn.classList.contains(styles.active)
+    ).textContent;
+    const numberOfPlayers = [...divs[1].querySelectorAll('button')].find(btn =>
+      btn.classList.contains(styles.active)
+    ).textContent;
+    const gridSize = [...divs[2].querySelectorAll('button')].find(btn =>
+      btn.classList.contains(styles.active)
+    ).textContent[0];
 
     setGameSettings({ theme, numberOfPlayers, gridSize });
   }

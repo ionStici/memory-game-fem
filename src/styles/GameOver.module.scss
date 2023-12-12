@@ -20,7 +20,7 @@
 
 .section {
   width: 100vw;
-  height: 100vh;
+  height: 100%;
 
   position: fixed;
   z-index: 7;
@@ -32,7 +32,7 @@
   width: 100%;
   height: 100%;
   padding: 90px 24px;
-  position: relative;
+  position: relative; 
 
   display: flex;
   align-items: center;
@@ -68,9 +68,7 @@
   text-align: center;
 
   @media only screen and (min-width: 768px) {
-    width: 654px;
-    max-width: revert;
-
+    max-width: 654px;
     border-radius: 20px;
     padding: 51px 56px 69px 56px;
   }

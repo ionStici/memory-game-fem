@@ -5,9 +5,9 @@ import { useState, useEffect } from 'react';
 function App() {
   const [gameSettings, setGameSettings] = useState(null);
 
-  useEffect(() => {
-    setGameSettings({ theme: 'Icons', numberOfPlayers: '3', gridSize: '4' });
-  }, []);
+  //   useEffect(() => {
+  // setGameSettings({ theme: 'Icons', numberOfPlayers: '3', gridSize: '4' });
+  //   }, []);
 
   return (
     <main>

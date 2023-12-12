@@ -14,18 +14,18 @@ function Game({ gameSettings, setGameSettings }) {
   const dotsRef = useRef(null);
 
   const [grid, setGrid] = useState(generateGrid(theme, gridSize, icons, shuffleArray));
-  const [gameOver, setGameOver] = useState(true);
+  const [gameOver, setGameOver] = useState(false);
 
   const [moves, setMoves] = useState(0);
   const [time, setTime] = useState(0);
 
   // // // // // // // // // // // // // // // // // // // //
 
-  const [score, setScore] = useState([3, 4, 1, 4]);
+  const [score, setScore] = useState([]);
   const [activePlayer, setActivePlayer] = useState(1);
 
   useEffect(() => {
-    // if (+numberOfPlayers > 1) setScore(Array.from({ length: +numberOfPlayers }, () => 0));
+    if (+numberOfPlayers > 1) setScore(Array.from({ length: +numberOfPlayers }, () => 0));
   }, [numberOfPlayers]);
 
   // // // // // // // // // // // // // // // // // // // //
@@ -61,6 +61,7 @@ function Game({ gameSettings, setGameSettings }) {
   return (
     <section className={styles.container}>
       <Header setGameSettings={setGameSettings} restart={restart} />
+
       <Dots
         grid={grid}
         gridSize={gridSize}
@@ -73,12 +74,15 @@ function Game({ gameSettings, setGameSettings }) {
         setActivePlayer={setActivePlayer}
         numberOfPlayers={numberOfPlayers}
       />
+
       {+numberOfPlayers === 1 && (
         <Stats moves={moves} time={time} setTime={setTime} gameOver={gameOver} />
       )}
+
       {+numberOfPlayers > 1 && (
         <PlayersBoxes num={numberOfPlayers} score={score} activePlayer={activePlayer} />
       )}
+
       {gameOver && (
         <GameOver
           moves={moves}

@@ -1,18 +1,20 @@
 import { useState, useRef, useEffect } from 'react';
 import { useContext } from 'react';
-import { shuffleArray } from '../lib/shuffleArray';
-import { generateGrid } from '../lib/generateGrid';
-import { icons } from '../data/icons';
-import styles from './../styles/Game.module.scss';
+import { shuffleArray } from '../../lib/shuffleArray';
+import { generateGrid } from '../../lib/generateGrid';
+import { icons } from '../../data/icons';
+import styles from './../../styles/Game.module.scss';
 import Dots from './Dots';
 import Header from './Header';
 import Stats from './Stats';
 import GameOver from './GameOver';
 import PlayersBoxes from './PlayersBoxes';
-import ScoresContext from '../store/ScoresContext';
+import ScoresContext from '../../store/ScoresContext';
 
 function Game({ gameSettings, setGameSettings }) {
   const { _, setScores } = useContext(ScoresContext);
+
+  // // // // // // // // // // // // // // // // // // // //
 
   const { theme, numberOfPlayers, gridSize, tilesShape } = gameSettings;
   const dotsRef = useRef(null);
@@ -35,9 +37,12 @@ function Game({ gameSettings, setGameSettings }) {
   // // // // // // // // // // // // // // // // // // // //
 
   useEffect(() => {
-    if (tilesShape === 'Squircle' && +gridSize === 4) document.documentElement.style.setProperty('--tile-border-radius', '25px');
-    if (tilesShape === 'Squircle' && +gridSize === 6) document.documentElement.style.setProperty('--tile-border-radius', '20px');
-    if (tilesShape === 'Circle') document.documentElement.style.setProperty('--tile-border-radius', '50%');
+    if (tilesShape === 'Squircle' && +gridSize === 4)
+      document.documentElement.style.setProperty('--tile-border-radius', '25px');
+    if (tilesShape === 'Squircle' && +gridSize === 6)
+      document.documentElement.style.setProperty('--tile-border-radius', '20px');
+    if (tilesShape === 'Circle')
+      document.documentElement.style.setProperty('--tile-border-radius', '50%');
   }, [tilesShape]);
 
   useEffect(() => {
@@ -87,9 +92,9 @@ function Game({ gameSettings, setGameSettings }) {
       <Header setGameSettings={setGameSettings} restart={restart} />
 
       <Dots
+        ref={dotsRef}
         grid={grid}
         gridSize={gridSize}
-        ref={dotsRef}
         setMoves={setMoves}
         setGameOver={setGameOver}
         score={score}
@@ -99,9 +104,13 @@ function Game({ gameSettings, setGameSettings }) {
         numberOfPlayers={numberOfPlayers}
       />
 
-      {+numberOfPlayers === 1 && <Stats moves={moves} time={time} setTime={setTime} gameOver={gameOver} />}
+      {+numberOfPlayers === 1 && (
+        <Stats moves={moves} time={time} setTime={setTime} gameOver={gameOver} />
+      )}
 
-      {+numberOfPlayers > 1 && <PlayersBoxes num={numberOfPlayers} score={score} activePlayer={activePlayer} />}
+      {+numberOfPlayers > 1 && (
+        <PlayersBoxes num={numberOfPlayers} score={score} activePlayer={activePlayer} />
+      )}
 
       {gameOver && (
         <GameOver

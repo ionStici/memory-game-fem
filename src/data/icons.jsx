@@ -392,24 +392,3 @@ export const icons = [
     />
   </svg>,
 ];
-
-// export const icons = [
-//   "/icons/airplane.svg",
-//   "/icons/beer.svg",
-//   "/icons/boat.svg",
-//   "/icons/car-sport.svg",
-//   "/icons/cash.svg",
-//   "/icons/color-palette.svg",
-//   "/icons/cube.svg",
-//   "/icons/flower.svg",
-//   "/icons/headset.svg",
-//   "/icons/hourglass.svg",
-//   "/icons/library.svg",
-//   "/icons/moon.svg",
-//   "/icons/paw.svg",
-//   "/icons/rose.svg",
-//   "/icons/snow.svg",
-//   "/icons/storefront.svg",
-//   "/icons/telescope.svg",
-//   "/icons/tennisball.svg",
-// ];

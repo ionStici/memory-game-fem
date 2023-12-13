@@ -1,4 +1,4 @@
-import styles from './../styles/Header.module.scss';
+import styles from './../../styles/Header.module.scss';
 import logo from '/logo.svg';
 import { useEffect, useState } from 'react';
 
@@ -17,14 +17,8 @@ function Header({ setGameSettings, restart }) {
   const handleToggleNav = () => setNavIsOpen(prev => !prev);
 
   const handleRestartNew = ({ target }) => {
-    if (target.textContent === 'Restart') {
-      restart();
-    }
-
-    if (target.textContent === 'New Game') {
-      setGameSettings(null);
-    }
-
+    if (target.textContent === 'Restart') restart();
+    if (target.textContent === 'New Game') setGameSettings(null);
     if (!match) setNavIsOpen(prev => !prev);
   };
 

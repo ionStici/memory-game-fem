@@ -1,12 +1,10 @@
-import styles from './../styles/Scores.module.scss';
-import ScoresContext from '../store/ScoresContext';
+import styles from './../../styles/Scores.module.scss';
+import ScoresContext from '../../store/ScoresContext';
 import { useContext } from 'react';
 
 function Scores({ setShowScores }) {
   const { scores, setScores } = useContext(ScoresContext);
-
   const data = scores.slice().reverse();
-
   const clearHistory = () => setScores([]);
 
   return (
@@ -14,32 +12,21 @@ function Scores({ setShowScores }) {
       <div className={styles.container}>
         <div className={styles.btns_wrapper}>
           <button onClick={() => setShowScores(false)}>
-            <img src="/arrow-back.svg" alt="" />
+            <img src="/arrow.svg" alt="" />
           </button>
-
-          {!(data.length === 0) && (
-            <button onClick={clearHistory}>Clear</button>
-          )}
+          {!(data.length === 0) && <button onClick={clearHistory}>Clear</button>}
         </div>
 
-        {data.length === 0 ? (
+        {data.length === 0 && (
           <>
-            <p className={styles.message}>
-              🎾 You don't have any previous games
-            </p>
-            <p className={styles.message}>
-              📝 Your game scores will be listed here
-            </p>
+            <p className={styles.message}>🎾 You don't have any previous games</p>
+            <p className={styles.message}>📝 Your game scores will be listed here</p>
           </>
-        ) : (
-          ''
         )}
 
         <ul className={styles.ul}>
           {data.map((score, i, arr) => {
-            const formattedTime = `${Math.trunc(score.time / 60)}:${
-              score.time % 60
-            }`;
+            const formattedTime = `${Math.trunc(score.time / 60)}:${score.time % 60}`;
 
             return (
               <li key={i}>
@@ -47,18 +34,15 @@ function Scores({ setShowScores }) {
                   <thead>
                     <tr>
                       <th>Game</th>
-
                       <th>Theme</th>
                       <th>Players</th>
                       <th>Grid</th>
-
                       {+score.numberOfPlayers === 1 && (
                         <>
                           <th>Time</th>
                           <th>Moves</th>
                         </>
                       )}
-
                       {+score.numberOfPlayers > 1 && (
                         <>
                           {score.score.map((_, i) => (
@@ -72,18 +56,15 @@ function Scores({ setShowScores }) {
                   <tbody>
                     <tr>
                       <th>{arr.length - i}</th>
-
                       <th>{score.theme}</th>
                       <th>{score.numberOfPlayers}</th>
                       <th>{+score.gridSize === 4 ? '4x4' : '6x6'}</th>
-
                       {+score.numberOfPlayers === 1 && (
                         <>
                           <th>{formattedTime}</th>
                           <th>{score.moves}</th>
                         </>
                       )}
-
                       {+score.numberOfPlayers > 1 && (
                         <>
                           {score.score.map((score, i) => (

@@ -1,3 +1,14 @@
+@keyframes fade-in-fwd {
+  0% {
+    transform: translateZ(-80px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateZ(0);
+    opacity: 1;
+  }
+}
+
 .layout {
   background-color: #152938;
   min-width: 100vw;
@@ -22,25 +33,16 @@
     padding: 0 56px;
   }
 
-  svg {
+  .logo {
+    width: 122px;
     display: block;
     margin: 0 auto;
     margin-bottom: 45px;
 
     @media only screen and (min-width: 768px) {
+      width: revert;
       margin-bottom: 78px;
     }
-  }
-}
-
-@keyframes fade-in-fwd {
-  0% {
-    transform: translateZ(-80px);
-    opacity: 0;
-  }
-  100% {
-    transform: translateZ(0);
-    opacity: 1;
   }
 }
 
@@ -58,7 +60,7 @@
     height: 690px;
   }
 
-  div:first-child {
+  .container {
     animation: fade-in-fwd 0.3s cubic-bezier(0.39, 0.575, 0.565, 1) both;
   }
 

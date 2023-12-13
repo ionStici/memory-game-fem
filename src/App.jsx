@@ -1,5 +1,5 @@
-import StartGame from './components/StartGame';
-import Game from './components/Game';
+import StartGame from './components/StartGame/StartGame';
+import Game from './components/Game/Game';
 import React from 'react';
 
 function App() {

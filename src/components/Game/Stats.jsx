@@ -1,4 +1,4 @@
-import styles from './../styles/Stats.module.scss';
+import styles from './../../styles/Stats.module.scss';
 import { useEffect } from 'react';
 
 function Stats({ moves, time, setTime, gameOver }) {

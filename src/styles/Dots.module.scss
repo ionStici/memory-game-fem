@@ -11,8 +11,6 @@
 
 :root {
   --tile-border-radius: 50%;
-  //   --tile-border-radius: 25px;
-  //   --tile-border-radius: 15px;
 }
 
 .ul {
@@ -37,8 +35,6 @@
     .back {
       width: 100%;
       height: 100%;
-      //   border-radius: 50%;
-      //   border-radius: 25px;
       border-radius: var(--tile-border-radius);
 
       position: absolute;
@@ -151,6 +147,3 @@
     transition: background-color 0.3s 0.3s;
   }
 }
-
-// 82 * 6 + 16 * 5 = 572
-// 118 * 4 + 20 * 3 = 532

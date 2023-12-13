@@ -1,9 +1,22 @@
-import styles from './../styles/Dots.module.scss';
+import styles from './../../styles/Dots.module.scss';
 import { useEffect, useState } from 'react';
 import { useImperativeHandle, forwardRef } from 'react';
 
 const Dots = forwardRef(
-  ({ grid, gridSize, setMoves, setGameOver, score, setScore, activePlayer, setActivePlayer, numberOfPlayers }, ref) => {
+  (
+    {
+      grid,
+      gridSize,
+      setMoves,
+      setGameOver,
+      score,
+      setScore,
+      activePlayer,
+      setActivePlayer,
+      numberOfPlayers,
+    },
+    ref
+  ) => {
     const [match, setMatch] = useState(window.matchMedia('(min-width: 768px)').matches);
 
     useEffect(() => {
@@ -13,7 +26,9 @@ const Dots = forwardRef(
       return () => mediaQuery.removeEventListener('change', handleChange);
     }, []);
 
-    const [guessedTiles, setGuessedTiles] = useState(Array.from({ length: grid.length }, () => false));
+    const [guessedTiles, setGuessedTiles] = useState(
+      Array.from({ length: grid.length }, () => false)
+    );
 
     const [tile1, setTile1] = useState(undefined);
     const [tile2, setTile2] = useState(undefined);
@@ -86,7 +101,9 @@ const Dots = forwardRef(
     }
 
     const gridStyles = {
-      gridTemplateColumns: `repeat(${+gridSize === 4 ? '4, minmax(0, 118px)' : '6, minmax(0, 82px)'})`,
+      gridTemplateColumns: `repeat(${
+        +gridSize === 4 ? '4, minmax(0, 118px)' : '6, minmax(0, 82px)'
+      })`,
       gridTemplateRows: `repeat(${+gridSize === 4 ? '4, minmax(0, 118px)' : '6, minmax(0, 82px)'})`,
       gap: `${match ? (+gridSize === 4 ? '20px' : '16px') : +gridSize === 4 ? '12.3px' : '9.1px'}`,
     };
@@ -112,9 +129,9 @@ const Dots = forwardRef(
               <li
                 key={i}
                 data-tile={i}
-                className={`${+tile1 === i || +tile2 === i || guessedTiles[i] ? styles.active : ''} ${
-                  +gridSize === 4 ? styles.grid_4 : styles.grid_6
-                }`}
+                className={`${
+                  +tile1 === i || +tile2 === i || guessedTiles[i] ? styles.active : ''
+                } ${+gridSize === 4 ? styles.grid_4 : styles.grid_6}`}
                 onClick={({ target }) => {
                   if (+tile1 === i || +tile2 === i || guessedTiles[i]) return;
                   handleDotClick(target);

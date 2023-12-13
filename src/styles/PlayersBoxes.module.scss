@@ -18,6 +18,8 @@
   max-width: 500px;
   margin: 0 auto;
 
+  flex-shrink: 0;
+
   @media only screen and (min-width: 768px) {
     width: 689px;
     max-width: revert;
@@ -43,6 +45,7 @@
   border-radius: 5px;
   background-color: #dfe7ec;
 
+  cursor: pointer;
   transition: background-color 0.25s;
 
   @media only screen and (min-width: 768px) {
@@ -62,7 +65,19 @@
     padding: 0 24px 0 21px;
   }
 
+  &:hover {
+    p:first-child {
+      font-size: 18px;
+
+      @media only screen and (min-width: 768px) {
+        font-size: 21px;
+      }
+    }
+  }
+
   p {
+    text-align: center;
+    pointer-events: none;
     transition: color 0.25s;
   }
 
@@ -70,6 +85,7 @@
     color: #7191a5;
     font-size: 15px;
     font-weight: 700;
+    transition: font-size 0.25s;
 
     @media only screen and (min-width: 1200px) {
       font-size: 18px;
@@ -143,5 +159,72 @@
 
   p {
     color: #fcfcfc !important;
+  }
+}
+
+@keyframes scale-in-center {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.modal {
+  position: fixed;
+  z-index: 7;
+  left: 0;
+  top: 0;
+
+  width: 100vw;
+  height: 100%;
+  min-height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .overlay {
+    animation: fade-in 0.5s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+
+    position: absolute;
+    z-index: 8;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+  div {
+    animation: scale-in-center 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+
+    display: flex;
+    flex-direction: column;
+
+    position: relative;
+    z-index: 9;
+
+    padding: 24px;
+    background-color: #fcfcfc;
+  }
+
+  label {
+  }
+
+  input {
+  }
+
+  button {
   }
 }

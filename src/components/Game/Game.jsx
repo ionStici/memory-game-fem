@@ -28,10 +28,14 @@ function Game({ gameSettings, setGameSettings }) {
   // // // // // // // // // // // // // // // // // // // //
 
   const [score, setScore] = useState([]);
+  const [names, setNames] = useState([]);
   const [activePlayer, setActivePlayer] = useState(1);
 
   useEffect(() => {
-    if (+numberOfPlayers > 1) setScore(Array.from({ length: +numberOfPlayers }, () => 0));
+    if (+numberOfPlayers > 1) {
+      setScore(Array.from({ length: +numberOfPlayers }, () => 0));
+      setNames(Array.from({ length: +numberOfPlayers }, () => undefined));
+    }
   }, [numberOfPlayers]);
 
   // // // // // // // // // // // // // // // // // // // //
@@ -52,7 +56,7 @@ function Game({ gameSettings, setGameSettings }) {
     }
 
     if (+numberOfPlayers > 1 && gameOver) {
-      const game = { theme, numberOfPlayers, gridSize, score };
+      const game = { theme, numberOfPlayers, gridSize, score, names };
       setScores(prev => [...prev, game]);
     }
   }, [gameOver]);
@@ -109,7 +113,13 @@ function Game({ gameSettings, setGameSettings }) {
       )}
 
       {+numberOfPlayers > 1 && (
-        <PlayersBoxes num={numberOfPlayers} score={score} activePlayer={activePlayer} />
+        <PlayersBoxes
+          num={numberOfPlayers}
+          score={score}
+          activePlayer={activePlayer}
+          names={names}
+          setNames={setNames}
+        />
       )}
 
       {gameOver && (

@@ -7,6 +7,8 @@ function Scores({ setShowScores }) {
   const data = scores.slice().reverse();
   const clearHistory = () => setScores([]);
 
+  console.log(data);
+
   return (
     <section className={styles.section}>
       <div className={styles.container}>

@@ -35,12 +35,9 @@ function Game({ gameSettings, setGameSettings }) {
   // // // // // // // // // // // // // // // // // // // //
 
   useEffect(() => {
-    if (tilesShape === 'Squircle' && +gridSize === 4)
-      document.documentElement.style.setProperty('--tile-border-radius', '25px');
-    if (tilesShape === 'Squircle' && +gridSize === 6)
-      document.documentElement.style.setProperty('--tile-border-radius', '20px');
-    if (tilesShape === 'Circle')
-      document.documentElement.style.setProperty('--tile-border-radius', '50%');
+    if (tilesShape === 'Squircle' && +gridSize === 4) document.documentElement.style.setProperty('--tile-border-radius', '25px');
+    if (tilesShape === 'Squircle' && +gridSize === 6) document.documentElement.style.setProperty('--tile-border-radius', '20px');
+    if (tilesShape === 'Circle') document.documentElement.style.setProperty('--tile-border-radius', '50%');
   }, [tilesShape]);
 
   useEffect(() => {
@@ -102,13 +99,9 @@ function Game({ gameSettings, setGameSettings }) {
         numberOfPlayers={numberOfPlayers}
       />
 
-      {+numberOfPlayers === 1 && (
-        <Stats moves={moves} time={time} setTime={setTime} gameOver={gameOver} />
-      )}
+      {+numberOfPlayers === 1 && <Stats moves={moves} time={time} setTime={setTime} gameOver={gameOver} />}
 
-      {+numberOfPlayers > 1 && (
-        <PlayersBoxes num={numberOfPlayers} score={score} activePlayer={activePlayer} />
-      )}
+      {+numberOfPlayers > 1 && <PlayersBoxes num={numberOfPlayers} score={score} activePlayer={activePlayer} />}
 
       {gameOver && (
         <GameOver

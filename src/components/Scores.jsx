@@ -17,13 +17,19 @@ function Scores({ setShowScores }) {
             <img src="/arrow-back.svg" alt="" />
           </button>
 
-          {!(data.length === 0) && <button onClick={clearHistory}>Clear</button>}
+          {!(data.length === 0) && (
+            <button onClick={clearHistory}>Clear</button>
+          )}
         </div>
 
         {data.length === 0 ? (
           <>
-            <p className={styles.message}>🎾 You don't have any previous games</p>
-            <p className={styles.message}>📝 Your game scores will be listed here</p>
+            <p className={styles.message}>
+              🎾 You don't have any previous games
+            </p>
+            <p className={styles.message}>
+              📝 Your game scores will be listed here
+            </p>
           </>
         ) : (
           ''
@@ -31,6 +37,10 @@ function Scores({ setShowScores }) {
 
         <ul className={styles.ul}>
           {data.map((score, i, arr) => {
+            const formattedTime = `${Math.trunc(score.time / 60)}:${
+              score.time % 60
+            }`;
+
             return (
               <li key={i}>
                 <table>
@@ -65,11 +75,11 @@ function Scores({ setShowScores }) {
 
                       <th>{score.theme}</th>
                       <th>{score.numberOfPlayers}</th>
-                      <th>{score.gridSize}</th>
+                      <th>{+score.gridSize === 4 ? '4x4' : '6x6'}</th>
 
                       {+score.numberOfPlayers === 1 && (
                         <>
-                          <th>{score.time}</th>
+                          <th>{formattedTime}</th>
                           <th>{score.moves}</th>
                         </>
                       )}

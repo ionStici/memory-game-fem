@@ -78,8 +78,8 @@ function StartGame({ setGameSettings, setShowScores, showScores }) {
         <div className={styles.box}>
           <p>Tiles Shape</p>
           <div onClick={handleActiveStates}>
-            <button className={styles.active}>Squircle</button>
-            <button>Circle</button>
+            <button className={styles.active}>Circle</button>
+            <button>Squircle</button>
           </div>
         </div>
 

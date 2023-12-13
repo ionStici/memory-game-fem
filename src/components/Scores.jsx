@@ -16,10 +16,18 @@ function Scores({ setShowScores }) {
           <button onClick={() => setShowScores(false)}>
             <img src="/arrow-back.svg" alt="" />
           </button>
-          <button onClick={clearHistory}>Clear</button>
+
+          {!(data.length === 0) && <button onClick={clearHistory}>Clear</button>}
         </div>
 
-        {data.length === 0 ? <p>You don't have any previous games.</p> : ''}
+        {data.length === 0 ? (
+          <>
+            <p className={styles.message}>🎾 You don't have any previous games</p>
+            <p className={styles.message}>📝 Your game scores will be listed here</p>
+          </>
+        ) : (
+          ''
+        )}
 
         <ul className={styles.ul}>
           {data.map((score, i, arr) => {

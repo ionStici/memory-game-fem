@@ -10,7 +10,17 @@
   scrollbar-width: none;
 }
 
-// .container {}
+.container {
+  .message {
+    font-size: 20px;
+    margin-bottom: 8px;
+
+    @media only screen and (min-width: 768px) {
+      font-size: 26px;
+      margin-bottom: 16px;
+    }
+  }
+}
 
 .btns_wrapper {
   display: flex;

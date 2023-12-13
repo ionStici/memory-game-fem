@@ -4,7 +4,7 @@ import React from 'react';
 
 function App() {
   const [gameSettings, setGameSettings] = React.useState(null);
-  const [showScores, setShowScores] = React.useState(false);
+  const [showScores, setShowScores] = React.useState(true);
 
   //   React.useEffect(() => {
   //     setGameSettings({ theme: 'Numbers', numberOfPlayers: '1', gridSize: '4' });

@@ -34,12 +34,40 @@
 }
 
 .ul {
-  li {
-    display: flex;
-    column-gap: 10px;
+  list-style: none;
 
-    div {
-      margin-bottom: 20px;
+  li {
+  }
+
+  table {
+    width: 100%;
+    margin-bottom: 12px;
+  }
+
+  thead {
+    font-weight: 700;
+  }
+
+  tbody {
+    font-weight: 500;
+  }
+
+  th {
+    border-radius: 5px;
+    background-color: #dfe7ec;
+    padding: 2px 6px;
+
+    text-align: center;
+    color: #304859;
+    font-family: inherit;
+    font-weight: inherit;
+  }
+
+  tr > th:nth-child(2),
+  tr > th:nth-child(3),
+  tr > th:nth-child(4) {
+    @media only screen and (max-width: 475px) {
+      display: none;
     }
   }
 }

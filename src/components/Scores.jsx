@@ -19,56 +19,60 @@ function Scores({ setShowScores }) {
           <button onClick={clearHistory}>Clear</button>
         </div>
 
+        {data.length === 0 ? <p>You don't have any previous games.</p> : ''}
+
         <ul className={styles.ul}>
           {data.map((score, i, arr) => {
             return (
               <li key={i}>
-                <div>
-                  <p>Game</p>
-                  <p>{arr.length - i}</p>
-                </div>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Game</th>
+                      <th>Theme</th>
+                      <th>Players</th>
+                      <th>Grid</th>
 
-                <div>
-                  <p>Theme</p>
-                  <p>{score.theme}</p>
-                </div>
+                      {+score.numberOfPlayers === 1 && (
+                        <>
+                          <th>Time</th>
+                          <th>Moves</th>
+                        </>
+                      )}
 
-                <div>
-                  <p>Players</p>
-                  <p>{score.numberOfPlayers}</p>
-                </div>
+                      {+score.numberOfPlayers > 1 && (
+                        <>
+                          {score.score.map((_, i) => (
+                            <th key={i}>P{i + 1}</th>
+                          ))}
+                        </>
+                      )}
+                    </tr>
+                  </thead>
 
-                <div>
-                  <p>Grid Size</p>
-                  <p>{score.gridSize}</p>
-                </div>
+                  <tbody>
+                    <tr>
+                      <th>{arr.length - i}</th>
+                      <th>{score.theme}</th>
+                      <th>{score.numberOfPlayers}</th>
+                      <th>{score.gridSize}</th>
+                      {+score.numberOfPlayers === 1 && (
+                        <>
+                          <th>{score.time}</th>
+                          <th>{score.moves}</th>
+                        </>
+                      )}
 
-                {+score.numberOfPlayers === 1 && (
-                  <>
-                    <div>
-                      <p>Time</p>
-                      <p>{score.time}</p>
-                    </div>
-
-                    <div>
-                      <p>Moves</p>
-                      <p>{score.moves}</p>
-                    </div>
-                  </>
-                )}
-
-                {+score.numberOfPlayers > 1 && (
-                  <>
-                    {score.score.map((score, i) => {
-                      return (
-                        <div key={i}>
-                          <p>P{i + 1}</p>
-                          <p>{score}</p>
-                        </div>
-                      );
-                    })}
-                  </>
-                )}
+                      {+score.numberOfPlayers > 1 && (
+                        <>
+                          {score.score.map((score, i) => (
+                            <th key={i}>{score}</th>
+                          ))}
+                        </>
+                      )}
+                    </tr>
+                  </tbody>
+                </table>
               </li>
             );
           })}

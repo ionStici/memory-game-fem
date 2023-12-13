@@ -10,25 +10,69 @@
   scrollbar-width: none;
 }
 
-.container {
-}
+// .container {}
 
 .btns_wrapper {
   display: flex;
   align-items: center;
+  column-gap: 11px;
 
-  margin-bottom: 20px;
+  margin-bottom: 24px;
+
+  @media only screen and (min-width: 768px) {
+    column-gap: 32px;
+    margin-bottom: 32px;
+  }
 
   button {
     display: flex;
     align-items: center;
     justify-content: center;
 
-    width: 100px;
-    height: 48px;
+    height: 40px;
+
+    border-radius: 26px;
+    border: none;
+
+    color: #fcfcfc;
+    background-color: #fda214;
+    font-size: 16px;
+    font-weight: 700;
+
+    cursor: pointer;
+    transition: background-color 0.2s;
+
+    @media only screen and (min-width: 768px) {
+      height: 50px;
+      font-size: 24px;
+    }
+
+    &:hover {
+      background-color: #6395b8;
+    }
 
     img {
-      width: 35px;
+      width: 27.5px;
+
+      @media only screen and (min-width: 768px) {
+        width: 40px;
+      }
+    }
+  }
+
+  button:first-child {
+    width: 40px;
+
+    @media only screen and (min-width: 768px) {
+      width: 50px;
+    }
+  }
+
+  button:last-child {
+    width: 100px;
+
+    @media only screen and (min-width: 768px) {
+      width: 120px;
     }
   }
 }
@@ -36,12 +80,15 @@
 .ul {
   list-style: none;
 
-  li {
-  }
+  //   li {}
 
   table {
     width: 100%;
     margin-bottom: 12px;
+
+    @media only screen and (min-width: 768px) {
+      margin-bottom: 20px;
+    }
   }
 
   thead {
@@ -55,18 +102,24 @@
   th {
     border-radius: 5px;
     background-color: #dfe7ec;
-    padding: 2px 6px;
+    padding: 4px 10px;
 
     text-align: center;
     color: #304859;
+    font-size: 16px;
     font-family: inherit;
     font-weight: inherit;
+
+    @media only screen and (min-width: 768px) {
+      font-size: 18px;
+      padding: 6px 14px;
+    }
   }
 
   tr > th:nth-child(2),
   tr > th:nth-child(3),
   tr > th:nth-child(4) {
-    @media only screen and (max-width: 475px) {
+    @media only screen and (max-width: 515px) {
       display: none;
     }
   }

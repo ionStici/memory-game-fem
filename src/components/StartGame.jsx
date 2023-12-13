@@ -56,48 +56,50 @@ function StartGame({ setGameSettings, setShowScores, showScores }) {
         {logoWhite}
 
         <section className={styles.section}>
-          <div className={styles.box}>
-            <p>Select Theme</p>
-            <div onClick={handleActiveStates}>
-              <button className={styles.active}>Numbers</button>
-              <button>Icons</button>
+          <div>
+            <div className={styles.box}>
+              <p>Select Theme</p>
+              <div onClick={handleActiveStates}>
+                <button className={styles.active}>Numbers</button>
+                <button>Icons</button>
+              </div>
             </div>
-          </div>
 
-          <div className={styles.box}>
-            <p>Number of Players</p>
-            <div onClick={handleActiveStates} className={styles.nums}>
-              {Array.from({ length: 4 }, () => null).map((_, i) => (
-                <button key={i} className={i === 0 ? styles.active : ''}>
-                  {i + 1}
-                </button>
-              ))}
+            <div className={styles.box}>
+              <p>Number of Players</p>
+              <div onClick={handleActiveStates} className={styles.nums}>
+                {Array.from({ length: 4 }, () => null).map((_, i) => (
+                  <button key={i} className={i === 0 ? styles.active : ''}>
+                    {i + 1}
+                  </button>
+                ))}
+              </div>
             </div>
-          </div>
 
-          <div className={styles.box}>
-            <p>Grid Size</p>
-            <div onClick={handleActiveStates}>
-              <button className={styles.active}>4x4</button>
-              <button>6x6</button>
+            <div className={styles.box}>
+              <p>Grid Size</p>
+              <div onClick={handleActiveStates}>
+                <button className={styles.active}>4x4</button>
+                <button>6x6</button>
+              </div>
             </div>
-          </div>
 
-          <div className={styles.box}>
-            <p>Tiles Shape</p>
-            <div onClick={handleActiveStates}>
-              <button className={styles.active}>Squircle</button>
-              <button>Circle</button>
+            <div className={styles.box}>
+              <p>Tiles Shape</p>
+              <div onClick={handleActiveStates}>
+                <button className={styles.active}>Squircle</button>
+                <button>Circle</button>
+              </div>
             </div>
-          </div>
 
-          <div className={styles.btns_wrapper}>
-            <button onClick={handleStartGame} className={styles.btn_start}>
-              Start Game
-            </button>
-            <button className={styles.scores_btn} onClick={() => setShowScores(true)}>
-              <img src="/reader.svg" alt="" />
-            </button>
+            <div className={styles.btns_wrapper}>
+              <button onClick={handleStartGame} className={styles.btn_start}>
+                Start Game
+              </button>
+              <button className={styles.scores_btn} onClick={() => setShowScores(true)}>
+                <img src="/reader.svg" alt="" />
+              </button>
+            </div>
           </div>
         </section>
       </div>

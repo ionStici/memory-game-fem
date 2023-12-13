@@ -29,6 +29,7 @@ function Scores({ setShowScores }) {
                   <thead>
                     <tr>
                       <th>Game</th>
+
                       <th>Theme</th>
                       <th>Players</th>
                       <th>Grid</th>
@@ -53,9 +54,11 @@ function Scores({ setShowScores }) {
                   <tbody>
                     <tr>
                       <th>{arr.length - i}</th>
+
                       <th>{score.theme}</th>
                       <th>{score.numberOfPlayers}</th>
                       <th>{score.gridSize}</th>
+
                       {+score.numberOfPlayers === 1 && (
                         <>
                           <th>{score.time}</th>

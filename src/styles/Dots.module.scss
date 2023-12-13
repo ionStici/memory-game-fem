@@ -16,10 +16,12 @@
 .ul {
   display: grid;
   justify-content: center;
-  aspect-ratio: 1 / 1;
   list-style: none;
   color: #fcfcfc;
   font-weight: 700;
+
+  width: 100%;
+  aspect-ratio: 1 / 1;
 
   li {
     position: relative;

@@ -71,6 +71,7 @@ function PlayersBoxes({ num, score, activePlayer, names, setNames }) {
                 onChange={({ target }) => setName(target.value)}
                 onKeyDown={handlePlayerName}
                 placeholder=" "
+                autoComplete="off"
               />
               <label htmlFor="name" ref={label}>
                 Insert Player Name

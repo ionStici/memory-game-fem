@@ -37,14 +37,16 @@ function Scores({ setShowScores }) {
             if (+score.numberOfPlayers === 1) {
               biggestTime = arr
                 .filter(score => score.time)
-                .reduce(({ time }, arr) => {
-                  return time < arr.time ? time : arr.time;
+                .map(score => score.time)
+                .reduce((acc, time) => {
+                  return acc < time ? acc : time;
                 });
 
               biggestMoves = arr
                 .filter(score => score.moves)
-                .reduce(({ moves }, arr) => {
-                  return moves < arr.moves ? moves : arr.moves;
+                .map(score => score.moves)
+                .reduce((acc, moves) => {
+                  return acc < moves ? acc : moves;
                 });
             }
 

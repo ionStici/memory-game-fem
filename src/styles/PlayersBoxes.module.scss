@@ -67,8 +67,6 @@
 
   &:hover {
     p:first-child {
-      font-size: 18px;
-
       @media only screen and (min-width: 768px) {
         font-size: 21px;
       }
@@ -206,8 +204,11 @@
     background-color: rgba(0, 0, 0, 0.5);
   }
 
-  div {
+  .form {
     animation: scale-in-center 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+
+    max-width: 400px;
+    width: 100%;
 
     display: flex;
     flex-direction: column;
@@ -215,16 +216,110 @@
     position: relative;
     z-index: 9;
 
-    padding: 24px;
+    margin: 24px;
+    padding: 36px 24px 36px 24px;
+    border-radius: 10px;
     background-color: #fcfcfc;
+
+    @media only screen and (min-width: 768px) {
+      padding: 42px 24px 42px 24px;
+    }
+  }
+
+  div {
+    position: relative;
+
+    margin-bottom: 20px;
+
+    @media only screen and (min-width: 768px) {
+      margin-bottom: 24px;
+    }
   }
 
   label {
+    color: rgba(48, 72, 89, 0.5);
+    font-size: 18px;
+    pointer-events: none;
+
+    position: absolute;
+    left: 24px;
+    top: -25px;
+
+    transition: top 0.25s, transform 0.25s;
+
+    @media only screen and (min-width: 768px) {
+      font-size: 20px;
+      top: -30px;
+    }
   }
 
   input {
+    width: 100%;
+    font-size: 18px;
+
+    padding-left: 24px;
+    border: none;
+    height: 48px;
+    border-radius: 26px;
+    background-color: #dfe7ec;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+
+    @media only screen and (min-width: 768px) {
+      font-size: 20px;
+      height: 52px;
+    }
+  }
+
+  input:focus {
+    outline: none;
+  }
+
+  input:placeholder-shown + label {
+    top: 50%;
+    transform: translateY(-50%);
   }
 
   button {
+    height: 48px;
+    border-radius: 26px;
+    border: none;
+
+    font-size: 18px;
+    font-weight: 700;
+
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.25s;
+
+    &:not(:last-child) {
+      margin-bottom: 16px;
+
+      @media only screen and (min-width: 768px) {
+        margin-bottom: 20px;
+      }
+    }
+
+    @media only screen and (min-width: 768px) {
+      height: 52px;
+      font-size: 20px;
+    }
+  }
+
+  .submit {
+    color: #f2f2f2;
+    background-color: #fda214;
+
+    &:hover {
+      background-color: #ffb84a;
+    }
+  }
+
+  .close {
+    color: #fcfcfc;
+    background-color: #304859;
+
+    &:hover {
+      color: #304859;
+      background-color: #6395b8;
+    }
   }
 }

@@ -13,7 +13,7 @@ function PlayersBoxes({ num, score, activePlayer, names, setNames }) {
 
   // // // // // // // // // // // // // // // // // // // //
 
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
   const [name, setName] = useState('');
   const [playerNumber, setPlayerNumber] = useState(null);
   const label = useRef(null);
@@ -61,20 +61,27 @@ function PlayersBoxes({ num, score, activePlayer, names, setNames }) {
       {isOpen && (
         <div className={styles.modal}>
           <span className={styles.overlay} onClick={toggleModal}></span>
-          <div>
-            <label htmlFor="name" ref={label}>
-              Insert Player Name
-            </label>
-            <input
-              ref={input}
-              type="text"
-              id="name"
-              value={name}
-              onChange={({ target }) => setName(target.value)}
-              onKeyDown={handlePlayerName}
-            />
-            <button onClick={handlePlayerName}>Submit</button>
-            <button onClick={toggleModal}>Close</button>
+          <div className={styles.form}>
+            <div>
+              <input
+                ref={input}
+                type="text"
+                id="name"
+                value={name}
+                onChange={({ target }) => setName(target.value)}
+                onKeyDown={handlePlayerName}
+                placeholder=" "
+              />
+              <label htmlFor="name" ref={label}>
+                Insert Player Name
+              </label>
+            </div>
+            <button className={styles.submit} onClick={handlePlayerName}>
+              Submit
+            </button>
+            <button className={styles.close} onClick={toggleModal}>
+              Close
+            </button>
           </div>
         </div>
       )}
@@ -88,8 +95,8 @@ function PlayersBoxes({ num, score, activePlayer, names, setNames }) {
               className={`${styles.box} ${activePlayer == player ? styles.active : ''}`}
               onClick={toggleModal}
             >
-              {!names[i] && <p>{less768px ? `Player ${player}` : `P${player}`}</p>}
-              {names[i] && <p>{names[i]}</p>}
+              {(!names[i] || !less768px) && <p>{less768px ? `Player ${player}` : `P${player}`}</p>}
+              {names[i] && less768px && <p>{names[i]}</p>}
               <p>{score[player - 1]}</p>
             </div>
           );

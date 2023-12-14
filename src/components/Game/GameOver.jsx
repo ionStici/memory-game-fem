@@ -1,12 +1,14 @@
 import styles from './../../styles/GameOver.module.scss';
 
-function GameOver({ moves, time, setGameSettings, restart, score, numberOfPlayers }) {
+function GameOver({ moves, time, setGameSettings, restart, score, numberOfPlayers, names }) {
   const formattedTime = `${Math.trunc(time / 60)}:${String(time % 60).padStart(2, '0')}`;
 
   const winnerPoint = score.reduce((acc, point) => (acc > point ? acc : point), 0);
 
   const results = score
-    .map((score, i) => ({ player: i + 1, score }))
+    .map((score, i) => {
+      return { player: i + 1, name: names[i], score };
+    })
     .sort((a, b) => b.score - a.score);
 
   const isTie =
@@ -59,7 +61,9 @@ function GameOver({ moves, time, setGameSettings, restart, score, numberOfPlayer
                   return (
                     <li key={i} className={result.score === winnerPoint ? styles.winner : ''}>
                       <p>
-                        Player {result.player} {result.score === winnerPoint && '(Winner!)'}
+                        {!result.name && 'Player'} {!result.name && result.player}&nbsp;
+                        {result.name && result.name}&nbsp;
+                        {result.score === winnerPoint && '(Winner!)'}
                       </p>
                       <p>{result.score} Pairs</p>
                     </li>

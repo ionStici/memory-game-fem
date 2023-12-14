@@ -6,9 +6,10 @@ function App() {
   const [gameSettings, setGameSettings] = React.useState(null);
   const [showScores, setShowScores] = React.useState(false);
 
-  React.useEffect(() => {
-    setGameSettings({ theme: 'Numbers', numberOfPlayers: '4', gridSize: '4' });
-  }, []);
+  // TEMPORARY
+  //   React.useEffect(() => {
+  // setGameSettings({ theme: 'Numbers', numberOfPlayers: '4', gridSize: '4' });
+  //   }, []);
 
   return (
     <main>

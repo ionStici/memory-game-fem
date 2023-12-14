@@ -35,6 +35,9 @@ function Game({ gameSettings, setGameSettings }) {
     if (+numberOfPlayers > 1) {
       setScore(Array.from({ length: +numberOfPlayers }, () => 0));
       setNames(Array.from({ length: +numberOfPlayers }, () => undefined));
+      // TEMPORARY
+      //   setScore([3, 1, 3, 1]);
+      //   setNames(['Irina', 'John', 'Ana', undefined]);
     }
   }, [numberOfPlayers]);
 
@@ -130,6 +133,7 @@ function Game({ gameSettings, setGameSettings }) {
           restart={restart}
           score={score}
           numberOfPlayers={numberOfPlayers}
+          names={names}
         />
       )}
     </section>

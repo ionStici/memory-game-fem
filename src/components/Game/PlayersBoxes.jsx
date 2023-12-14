@@ -13,7 +13,7 @@ function PlayersBoxes({ num, score, activePlayer, names, setNames }) {
 
   // // // // // // // // // // // // // // // // // // // //
 
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   const [name, setName] = useState('');
   const [playerNumber, setPlayerNumber] = useState(null);
   const label = useRef(null);

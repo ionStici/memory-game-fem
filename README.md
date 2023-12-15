@@ -17,7 +17,7 @@ This is a solution to the [Memory game challenge on Frontend Mentor](https://www
 
 ## Screenshot
 
-![](./screenshot.png)
+![](./public/screenshot.png)
 
 ## Build with
 

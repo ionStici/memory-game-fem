@@ -21,6 +21,14 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  h1 {
+    position: absolute;
+    right: 0;
+    top: -35px;
+    pointer-events: none;
+    opacity: 0;
+  }
 }
 
 .wrapper {

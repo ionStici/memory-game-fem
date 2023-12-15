@@ -49,6 +49,7 @@ function StartGame({ setGameSettings }) {
 
   return (
     <Layout>
+      <h1>Memory Game</h1>
       <div className={styles.container}>
         <div className={styles.box}>
           <p>Select Theme</p>
@@ -89,7 +90,11 @@ function StartGame({ setGameSettings }) {
           <button onClick={handleStartGame} className={styles.btn_start}>
             Start Game
           </button>
-          <button className={styles.scores_btn} onClick={() => setShowScores(true)}>
+          <button
+            className={styles.scores_btn}
+            onClick={() => setShowScores(true)}
+            aria-label="See Previous Game Results"
+          >
             <img src="/reader.svg" alt="" />
           </button>
         </div>

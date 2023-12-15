@@ -4,7 +4,7 @@ This is a solution to the [Memory game challenge on Frontend Mentor](https://www
 
 ## Links
 
-- Solution URL: [Link](https://example.com)
+- Solution URL: [Frontend Mentor](https://www.frontendmentor.io/solutions/memory-game-54_cK32nNw)
 - Live Site URL: [Live Demo](https://memory-game-fem-ionstici.vercel.app/)
 
 ## Features
@@ -13,6 +13,7 @@ This is a solution to the [Memory game challenge on Frontend Mentor](https://www
 - Set the theme to use numbers or icons within the tiles + custom shape
 - Choose to play on either a 6x6 or 4x4 grid
 - View your previous game results (data stored in localStorage)
+- Give custom player names by clicking on player score boxes
 
 ## Screenshot
 
@@ -26,7 +27,7 @@ This is a solution to the [Memory game challenge on Frontend Mentor](https://www
 
 ## What I learned
 
-By using just one property `aspect-ratio', we can keep the shape of the box as square when scaling down the screen.
+By using just one property `aspect-ratio`, we can keep the shape of the box as square when scaling down the screen.
 
 ```css
 .container {
@@ -39,5 +40,6 @@ Note that for this to work for Safari, the `width` property is also needed.
 
 ## Author
 
-- GitHub - [Ion Stici](https://github.com/ionStici)
+- LinkedIn - [in/ionstici](https://www.linkedin.com/in/ionstici/)
+- Twitter - [@ionsticidev](https://twitter.com/ionsticidev)
 - Frontend Mentor - [@ionStici](https://www.frontendmentor.io/profile/ionStici)

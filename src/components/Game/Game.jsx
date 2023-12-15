@@ -12,9 +12,8 @@ import PlayersBoxes from './PlayersBoxes';
 import ScoresContext from '../../store/ScoresContext';
 
 function Game({ gameSettings, setGameSettings }) {
-  const { _, setScores } = useContext(ScoresContext);
-
   // // // // // // // // // // // // // // // // // // // //
+  const { _, setScores } = useContext(ScoresContext);
 
   const { theme, numberOfPlayers, gridSize, tilesShape } = gameSettings;
   const dotsRef = useRef(null);

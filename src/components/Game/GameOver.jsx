@@ -18,7 +18,14 @@ function GameOver({ moves, time, setGameSettings, restart, score, numberOfPlayer
     }, []).length > 1;
 
   let winner;
-  if (!isTie) winner = score.indexOf(winnerPoint) + 1;
+
+  if (!isTie) {
+    const playerNum = score.indexOf(winnerPoint) + 1;
+    const playerName = names[playerNum - 1];
+
+    if (playerName) winner = playerName;
+    if (!playerName) winner = playerNum;
+  }
 
   return (
     <section className={styles.section}>
@@ -30,7 +37,7 @@ function GameOver({ moves, time, setGameSettings, restart, score, numberOfPlayer
               ? 'You did it!'
               : isTie
               ? 'It’s a tie!'
-              : `Player ${winner} Wins!`}
+              : `${typeof winner === 'number' ? 'Player' : ''} ${winner} Wins!`}
           </h1>
           <p className={styles.text}>
             {+numberOfPlayers === 1

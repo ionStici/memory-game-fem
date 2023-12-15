@@ -4,17 +4,10 @@ import React from 'react';
 
 function App() {
   const [gameSettings, setGameSettings] = React.useState(null);
-  const [showScores, setShowScores] = React.useState(false);
 
   return (
     <main>
-      {!gameSettings && (
-        <StartGame
-          setGameSettings={setGameSettings}
-          setShowScores={setShowScores}
-          showScores={showScores}
-        />
-      )}
+      {!gameSettings && <StartGame setGameSettings={setGameSettings} />}
       {gameSettings && <Game gameSettings={gameSettings} setGameSettings={setGameSettings} />}
     </main>
   );

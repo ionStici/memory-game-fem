@@ -1,9 +1,11 @@
 import styles from './../../styles/StartGame.module.scss';
 import Scores from './Scores';
 import Layout from './Layout';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
-function StartGame({ setGameSettings, setShowScores, showScores }) {
+function StartGame({ setGameSettings }) {
+  const [showScores, setShowScores] = useState(false);
+
   function handleActiveStates({ target }) {
     if (target.nodeName !== 'BUTTON') return;
     if (target.classList.contains(styles.active)) return;

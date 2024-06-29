@@ -2,7 +2,7 @@
 
 This is a solution to the [Memory game challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/memory-game-vse4WFPvM).
 
-## Links
+<!-- ## Links
 
 - Solution URL: [Frontend Mentor](https://www.frontendmentor.io/solutions/memory-game-54_cK32nNw)
 - Live Site URL: [Live Demo](https://memory-game-fem-ionstici.vercel.app/)
@@ -42,4 +42,4 @@ Note that for this to work for Safari, the `width` property is also needed.
 
 - LinkedIn - [in/ionstici](https://www.linkedin.com/in/ionstici/)
 - Twitter - [@ionsticidev](https://twitter.com/ionsticidev)
-- Frontend Mentor - [@ionStici](https://www.frontendmentor.io/profile/ionStici)
+- Frontend Mentor - [@ionStici](https://www.frontendmentor.io/profile/ionStici) -->

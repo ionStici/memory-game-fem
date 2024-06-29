@@ -1,14 +1,14 @@
 import StartGame from './components/StartGame/StartGame';
 import Game from './components/Game/Game';
-import React from 'react';
+import { useGameSettings } from './GameSettings';
 
 function App() {
-  const [gameSettings, setGameSettings] = React.useState(null);
+  const { gameSettings } = useGameSettings();
 
   return (
     <main>
-      {!gameSettings && <StartGame setGameSettings={setGameSettings} />}
-      {gameSettings && <Game gameSettings={gameSettings} setGameSettings={setGameSettings} />}
+      {!gameSettings && <StartGame />}
+      {/* {gameSettings && <Game gameSettings={gameSettings} setGameSettings={setGameSettings} />} */}
     </main>
   );
 }

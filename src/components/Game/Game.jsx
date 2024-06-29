@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { useContext } from 'react';
+
 import { shuffleArray } from '../../lib/shuffleArray';
 import { generateGrid } from '../../lib/generateGrid';
 import { icons } from '../../data/icons';
@@ -9,11 +9,9 @@ import Header from './Header';
 import Stats from './Stats';
 import GameOver from './GameOver';
 import PlayersBoxes from './PlayersBoxes';
-import ScoresContext from '../../store/ScoresContext';
 
 function Game({ gameSettings, setGameSettings }) {
   // // // // // // // // // // // // // // // // // // // //
-  const { _, setScores } = useContext(ScoresContext);
 
   const { theme, numberOfPlayers, gridSize, tilesShape } = gameSettings;
   const dotsRef = useRef(null);
@@ -44,21 +42,8 @@ function Game({ gameSettings, setGameSettings }) {
       document.documentElement.style.setProperty('--tile-border-radius', '25px');
     if (tilesShape === 'Squircle' && +gridSize === 6)
       document.documentElement.style.setProperty('--tile-border-radius', '20px');
-    if (tilesShape === 'Circle')
-      document.documentElement.style.setProperty('--tile-border-radius', '50%');
+    if (tilesShape === 'Circle') document.documentElement.style.setProperty('--tile-border-radius', '50%');
   }, [tilesShape]);
-
-  useEffect(() => {
-    if (+numberOfPlayers === 1 && gameOver) {
-      const game = { theme, numberOfPlayers, gridSize, moves, time };
-      setScores(prev => [...prev, game]);
-    }
-
-    if (+numberOfPlayers > 1 && gameOver) {
-      const game = { theme, numberOfPlayers, gridSize, score, names };
-      setScores(prev => [...prev, game]);
-    }
-  }, [gameOver]);
 
   // // // // // // // // // // // // // // // // // // // //
 
@@ -107,18 +92,10 @@ function Game({ gameSettings, setGameSettings }) {
         numberOfPlayers={numberOfPlayers}
       />
 
-      {+numberOfPlayers === 1 && (
-        <Stats moves={moves} time={time} setTime={setTime} gameOver={gameOver} />
-      )}
+      {+numberOfPlayers === 1 && <Stats moves={moves} time={time} setTime={setTime} gameOver={gameOver} />}
 
       {+numberOfPlayers > 1 && (
-        <PlayersBoxes
-          num={numberOfPlayers}
-          score={score}
-          activePlayer={activePlayer}
-          names={names}
-          setNames={setNames}
-        />
+        <PlayersBoxes num={numberOfPlayers} score={score} activePlayer={activePlayer} names={names} setNames={setNames} />
       )}
 
       {gameOver && (

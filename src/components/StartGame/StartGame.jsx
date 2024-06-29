@@ -1,24 +1,38 @@
 import styles from './../../styles/StartGame.module.scss';
+import { useEffect } from 'react';
 import { useGameSettings } from '../../GameSettings';
-import Select from './Select';
+import SelectSetting from './SelectSetting';
+
+const test = [
+  { setting: 'theme', title: 'Select Theme', options: ['Numbers', 'Icons'] },
+  { setting: 'players', title: 'Number of Players', options: ['1', '2', '3', '4'] },
+  { setting: 'grid', title: 'Grid Size', options: ['4x4', '6x6'] },
+  { setting: 'tiles', title: 'Tiles Shape', options: ['Circle', 'Squircle'] },
+];
 
 function StartGame() {
-  const { setGameSettings } = useGameSettings();
-  // setGameSettings({ theme: 'Numbers', numberOfPlayers: '1', gridSize: '4', tilesShape: 'Circle' });
+  const { setPlay } = useGameSettings();
+
+  useEffect(() => {
+    document.body.style.setProperty('background-color', '#152938');
+    return () => document.body.style.setProperty('background-color', '#FCFCFC');
+  }, []);
 
   return (
     <div className={styles.layout}>
       <div className={styles.wrapper}>
-        <img className={styles.logo} src="logo-white.svg" alt="Logo" />
+        <h1 className={styles.h1}>
+          <img src="logo-white.svg" alt="Logo" />
+          <span>Memory Game</span>
+        </h1>
         <section className={styles.section}>
-          <h1>Memory Game</h1>
-
           <div className={styles.container}>
-            <Select title="Select Theme" options={['Numbers', 'Icons']} />
-            <Select title="Number of Players" options={['1', '2', '3', '4']} />
-            <Select title="Grid Size" options={['4x4', '6x6']} />
-            <Select title="Tiles Shape" options={['Circle', 'Squircle']} />
-            <button className={styles.btn_start}>Start Game</button>
+            {test.map(({ setting, title, options }) => {
+              return <SelectSetting key={setting} setting={setting} title={title} options={options} />;
+            })}
+            <button onClick={() => setPlay(true)} className={styles.btn}>
+              Start Game
+            </button>
           </div>
         </section>
       </div>

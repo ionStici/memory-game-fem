@@ -13,6 +13,8 @@ import PlayersBoxes from './PlayersBoxes';
 function Game({ gameSettings, setGameSettings }) {
   // // // // // // // // // // // // // // // // // // // //
 
+  // { theme, numberOfPlayers, gridSize, tilesShape };
+
   const { theme, numberOfPlayers, gridSize, tilesShape } = gameSettings;
   const dotsRef = useRef(null);
 

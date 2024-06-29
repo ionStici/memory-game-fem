@@ -21,14 +21,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
-  h1 {
-    position: absolute;
-    right: 0;
-    top: -35px;
-    pointer-events: none;
-    opacity: 0;
-  }
 }
 
 .wrapper {
@@ -40,8 +32,10 @@
     max-width: 766px;
     padding: 0 56px;
   }
+}
 
-  .logo {
+.h1 {
+  img {
     width: 122px;
     display: block;
     margin: 0 auto;
@@ -51,6 +45,13 @@
       width: revert;
       margin-bottom: 78px;
     }
+  }
+
+  span {
+    position: absolute;
+    overflow: hidden;
+    pointer-events: none;
+    opacity: 0;
   }
 }
 
@@ -67,143 +68,99 @@
     padding: 56px;
     height: 690px;
   }
+}
 
-  .container {
-    animation: fade-in-fwd 0.3s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+.container {
+  animation: fade-in-fwd 0.3s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+
+  margin-bottom: 24px;
+
+  @media only screen and (min-width: 768px) {
+    margin-bottom: 32px;
   }
 
-  .box {
-    display: flex;
-    flex-direction: column;
-
-    margin-bottom: 24px;
-
-    @media only screen and (min-width: 768px) {
-      margin-bottom: 32px;
-    }
-
-    p {
-      color: #7191a5;
-      font-size: 15px;
-      font-weight: 700;
-      margin-bottom: 11px;
-
-      @media only screen and (min-width: 768px) {
-        font-size: 20px;
-        margin-bottom: 16px;
-      }
-    }
-
-    div {
-      display: flex;
-      justify-content: space-between;
-      column-gap: 11px;
-
-      @media only screen and (min-width: 768px) {
-        column-gap: 30px;
-      }
-
-      button {
-        width: 100%;
-        height: 40px;
-
-        border: none;
-        border-radius: 26px;
-        background-color: #bcced9;
-
-        color: #fcfcfc;
-        font-size: 16px;
-        font-weight: 700;
-
-        cursor: pointer;
-        transition: background-color 0.2s;
-
-        &:hover {
-          background-color: #6395b8;
-        }
-
-        @media only screen and (min-width: 768px) {
-          font-size: 26px;
-          height: 52px;
-        }
-      }
-
-      .nums {
-        @media only screen and (min-width: 768px) {
-          column-gap: 22px;
-        }
-      }
-
-      .active {
-        background-color: #304859;
-
-        &:hover {
-          background-color: #304859;
-        }
-      }
-    }
-  }
-
-  .btn_start {
-    display: block;
-    width: 100%;
-    height: 48px;
-    margin-top: 32px;
-
-    color: #fcfcfc;
-    font-size: 18px;
+  p {
+    color: #7191a5;
+    font-size: 15px;
     font-weight: 700;
-
-    border: none;
-    border-radius: 26px;
-    background-color: #fda214;
-
-    cursor: pointer;
-    transition: background-color 0.2s;
-
-    &:hover {
-      background-color: #ffb84a;
-    }
+    margin-bottom: 11px;
 
     @media only screen and (min-width: 768px) {
-      font-size: 32px;
-      height: 70px;
-      border-radius: 35px;
-      margin-top: 40px;
+      font-size: 20px;
+      margin-bottom: 16px;
     }
   }
 
-  .scores_btn {
+  div {
     display: flex;
-    align-items: center;
-    justify-content: center;
-
-    width: 55.5px;
-    height: 48px;
-    background-color: #bcced9;
-
-    border: none;
-    border-radius: 26px;
-
-    cursor: pointer;
-    transition: background-color 0.25s;
+    justify-content: space-between;
+    column-gap: 11px;
 
     @media only screen and (min-width: 768px) {
-      width: 86px;
-      height: 70px;
-      border-radius: 35px;
+      column-gap: 30px;
     }
 
-    &:hover {
-      background-color: #6395b8;
-    }
+    button {
+      width: 100%;
+      height: 40px;
 
-    img {
-      width: 30px;
+      border: none;
+      border-radius: 26px;
+      background-color: #bcced9;
+
+      color: #fcfcfc;
+      font-size: 16px;
+      font-weight: 700;
+
+      cursor: pointer;
+      transition: background-color 0.2s;
+
+      &:hover {
+        background-color: #6395b8;
+      }
 
       @media only screen and (min-width: 768px) {
-        width: 45px;
+        font-size: 26px;
+        height: 52px;
       }
     }
+  }
+}
+
+.active {
+  background-color: #304859 !important;
+}
+
+.btn {
+  display: block;
+  width: 100%;
+  height: 48px;
+  margin-top: 32px;
+
+  color: #fcfcfc;
+  font-size: 18px;
+  font-weight: 700;
+
+  border: none;
+  border-radius: 26px;
+  background-color: #fda214;
+
+  cursor: pointer;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: #ffb84a;
+  }
+
+  @media only screen and (min-width: 768px) {
+    font-size: 32px;
+    height: 70px;
+    border-radius: 35px;
+    margin-top: 40px;
   }
 }

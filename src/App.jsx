@@ -1,14 +1,14 @@
 import StartGame from './components/StartGame/StartGame';
-import Game from './components/Game/Game';
+// import Game from './components/Game/Game';
 import { useGameSettings } from './GameSettings';
 
 function App() {
-  const { gameSettings } = useGameSettings();
+  const { play } = useGameSettings();
 
   return (
     <main>
-      {!gameSettings && <StartGame />}
-      {/* {gameSettings && <Game gameSettings={gameSettings} setGameSettings={setGameSettings} />} */}
+      {!play && <StartGame />}
+      {/* <Game gameSettings={gameSettings} setGameSettings={setGameSettings} /> */}
     </main>
   );
 }

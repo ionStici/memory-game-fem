@@ -150,49 +150,49 @@
       }
     }
   }
+}
 
-  button {
-    width: 100%;
-    height: 48px;
-    border-radius: 26px;
-    border: none;
+.btn {
+  width: 100%;
+  height: 48px;
+  border-radius: 26px;
+  border: none;
 
-    font-size: 18px;
-    font-weight: 700;
+  font-size: 18px;
+  font-weight: 700;
 
-    color: #304859;
-    background-color: #dfe7ec;
+  color: #304859;
+  background-color: #dfe7ec;
 
-    @media only screen and (min-width: 768px) {
-      width: revert;
-      height: 52px;
-      padding: 0 24px;
-      font-size: 20px;
-    }
-
-    cursor: pointer;
-    transition: color 0.2s, background-color 0.2s, transform 0.1s;
-
-    &:hover {
-      color: #fcfcfc;
-      background-color: #6395b8;
-    }
-
-    &:active {
-      transform: scale(0.95);
-    }
+  @media only screen and (min-width: 768px) {
+    width: revert;
+    height: 52px;
+    padding: 0 24px;
+    font-size: 20px;
   }
 
-  .btn_restart {
+  cursor: pointer;
+  transition: color 0.2s, background-color 0.2s, transform 0.1s;
+
+  &:hover {
     color: #fcfcfc;
-    background-color: #fda214;
+    background-color: #6395b8;
+  }
 
-    @media only screen and (min-width: 768px) {
-      padding: 0 28px;
-    }
+  &:active {
+    transform: scale(0.95);
+  }
+}
 
-    &:hover {
-      background-color: #ffb84a;
-    }
+.btn_restart {
+  color: #fcfcfc;
+  background-color: #fda214;
+
+  @media only screen and (min-width: 768px) {
+    padding: 0 28px;
+  }
+
+  &:hover {
+    background-color: #ffb84a;
   }
 }

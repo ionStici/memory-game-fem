@@ -1,17 +1,9 @@
+import { useMediaQuery } from '../../hooks/useMediaQuery';
 import styles from './../../styles/PlayersBoxes.module.scss';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useRef } from 'react';
 
 function PlayersBoxes({ num, score, activePlayer, names, setNames }) {
-  const [less768px, setLess768px] = useState(window.matchMedia('(min-width: 768px)').matches);
-
-  useEffect(() => {
-    const mediaQuery = window.matchMedia('(min-width: 768px)');
-    const handleChange = e => setLess768px(e.matches);
-    mediaQuery.addEventListener('change', handleChange);
-    return () => mediaQuery.removeEventListener('change', handleChange);
-  }, []);
-
-  // // // // // // // // // // // // // // // // // // // //
+  const less768px = useMediaQuery('min-width', '768px');
 
   const [isOpen, setIsOpen] = useState(false);
   const [name, setName] = useState('');
@@ -23,7 +15,7 @@ function PlayersBoxes({ num, score, activePlayer, names, setNames }) {
     if (event) setPlayerNumber(+event.target.dataset.player);
     if (!event) setPlayerNumber(null);
 
-    setIsOpen(prev => !prev);
+    setIsOpen((prev) => !prev);
     setName('');
 
     setTimeout(() => {
@@ -31,7 +23,7 @@ function PlayersBoxes({ num, score, activePlayer, names, setNames }) {
     }, 1);
   };
 
-  const handlePlayerName = event => {
+  const handlePlayerName = (event) => {
     if (event.key !== 'Enter' && event.type === 'keydown') return;
 
     if (!name) {
@@ -44,7 +36,7 @@ function PlayersBoxes({ num, score, activePlayer, names, setNames }) {
       return;
     }
 
-    setNames(prev => {
+    setNames((prev) => {
       const arr = [...prev];
       arr[playerNumber - 1] = name;
       return arr;

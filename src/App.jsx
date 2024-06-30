@@ -1,16 +1,11 @@
-import StartGame from './components/StartGame/StartGame';
-// import Game from './components/Game/Game';
 import { useGameSettings } from './GameSettings';
+import StartGame from './features/StartGame/StartGame';
+import Game from './features/Game/Game';
 
 function App() {
   const { play } = useGameSettings();
 
-  return (
-    <main>
-      {!play && <StartGame />}
-      {/* <Game gameSettings={gameSettings} setGameSettings={setGameSettings} /> */}
-    </main>
-  );
+  return <main>{!play ? <StartGame /> : <Game />}</main>;
 }
 
 export default App;

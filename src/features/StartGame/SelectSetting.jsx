@@ -13,7 +13,7 @@ function SelectSetting({ setting, title, options }) {
 
     if (setting === 'theme') setTheme(target.textContent);
     if (setting === 'players') setPlayers(target.textContent);
-    if (setting === 'grid') setGrid(target.textContent);
+    if (setting === 'grid') setGrid(target.textContent[0]);
     if (setting === 'tiles') setTiles(target.textContent);
   };
 

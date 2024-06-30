@@ -1,10 +1,13 @@
 @keyframes fade-in-fwd {
   0% {
-    transform: translateZ(-80px);
+    transform: scale(0.95);
     opacity: 0;
   }
+  50% {
+    transform: scale(1.05);
+  }
   100% {
-    transform: translateZ(0);
+    transform: scale(1);
     opacity: 1;
   }
 }
@@ -71,7 +74,7 @@
 }
 
 .container {
-  animation: fade-in-fwd 0.3s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+  animation: fade-in-fwd 0.5s 0.1s both;
 }
 
 .box {

@@ -13,7 +13,7 @@ export default function GameSettingsProvider({ children }) {
   const gameSettings = { theme, players, grid, tiles };
 
   return (
-    <GameSettingsContext.Provider value={{ play, setPlay, gameSettings, setTheme, setPlayers, setGrid, setTiles }}>
+    <GameSettingsContext.Provider value={{ play, setPlay, gameSettings, setTheme, players, setPlayers, setGrid, setTiles }}>
       {children}
     </GameSettingsContext.Provider>
   );

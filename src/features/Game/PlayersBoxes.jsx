@@ -1,9 +1,12 @@
+import { useGameSettings } from '../../GameSettings';
 import { useMediaQuery } from '../../hooks/useMediaQuery';
 import styles from './../../styles/PlayersBoxes.module.scss';
 import { useState, useRef } from 'react';
 
-function PlayersBoxes({ num, score, activePlayer, names, setNames }) {
+function PlayersBoxes({ score, activePlayer, names, setNames }) {
   const less768px = useMediaQuery('min-width', '768px');
+
+  const { players } = useGameSettings();
 
   const [isOpen, setIsOpen] = useState(false);
   const [name, setName] = useState('');
@@ -46,8 +49,6 @@ function PlayersBoxes({ num, score, activePlayer, names, setNames }) {
     setName('');
   };
 
-  // // // // // // // // // // // // // // // // // // // //
-
   return (
     <section className={styles.section}>
       {isOpen && (
@@ -80,7 +81,7 @@ function PlayersBoxes({ num, score, activePlayer, names, setNames }) {
       )}
 
       <div className={styles.wrapper}>
-        {Array.from({ length: num }, (_, i) => i + 1).map((player, i) => {
+        {Array.from({ length: players }, (_, i) => i + 1).map((player, i) => {
           return (
             <div
               key={player}

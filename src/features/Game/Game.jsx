@@ -14,9 +14,7 @@ import { icons } from '../../assets/icons';
 
 function Game() {
   const { gameSettings } = useGameSettings();
-
   const { theme, players, grid: gridSize, tiles } = gameSettings;
-  const dotsRef = useRef(null);
 
   const [grid, setGrid] = useState(generateGrid(theme, gridSize, icons, shuffleArray));
   const [gameOver, setGameOver] = useState(false);
@@ -26,7 +24,9 @@ function Game() {
 
   const [score, setScore] = useState([]);
   const [names, setNames] = useState([]);
+
   const [activePlayer, setActivePlayer] = useState(1);
+  const dotsRef = useRef(null);
 
   useEffect(() => {
     if (+players > 1) {
@@ -35,10 +35,11 @@ function Game() {
     }
   }, [players]);
 
+  const setCustomProperty = (property, value) => document.documentElement.style.setProperty(property, value);
   useEffect(() => {
-    if (tiles === 'Squircle' && +gridSize === 4) document.documentElement.style.setProperty('--tile-border-radius', '25px');
-    if (tiles === 'Squircle' && +gridSize === 6) document.documentElement.style.setProperty('--tile-border-radius', '20px');
-    if (tiles === 'Circle') document.documentElement.style.setProperty('--tile-border-radius', '50%');
+    if (tiles === 'Squircle' && +gridSize === 4) setCustomProperty('--tile-border-radius', '25px');
+    if (tiles === 'Squircle' && +gridSize === 6) setCustomProperty('--tile-border-radius', '20px');
+    if (tiles === 'Circle') setCustomProperty('--tile-border-radius', '50%');
   }, [tiles]);
 
   const generateNewGrid = () => {
@@ -70,26 +71,10 @@ function Game() {
   return (
     <section className={styles.container}>
       <Header restart={restart} />
-
-      <Dots
-        ref={dotsRef}
-        grid={grid}
-        gridSize={gridSize}
-        setMoves={setMoves}
-        setGameOver={setGameOver}
-        score={score}
-        setScore={setScore}
-        activePlayer={activePlayer}
-        setActivePlayer={setActivePlayer}
-        players={players}
-      />
-
+      {/* prettier-ignore */}
+      <Dots ref={dotsRef} grid={grid} gridSize={gridSize} setMoves={setMoves} setGameOver={setGameOver} score={score} setScore={setScore} activePlayer={activePlayer} setActivePlayer={setActivePlayer} players={players} />
       {+players === 1 && <Stats moves={moves} time={time} setTime={setTime} gameOver={gameOver} />}
-
-      {+players > 1 && (
-        <PlayersBoxes num={players} score={score} activePlayer={activePlayer} names={names} setNames={setNames} />
-      )}
-
+      {+players > 1 && <PlayersBoxes score={score} activePlayer={activePlayer} names={names} setNames={setNames} />}
       {gameOver && <GameOver moves={moves} time={time} restart={restart} score={score} players={players} names={names} />}
     </section>
   );
